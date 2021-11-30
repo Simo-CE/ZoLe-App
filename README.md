@@ -7,5 +7,5 @@ Learning Zone Android app
 
 ##### 1. Android studio:
 ```
-as
+AS
 ```
