@@ -16,7 +16,7 @@ public class ServicesActivity extends AppCompatActivity {
     //private List<Service> services_list;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    /*protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_services);
 
@@ -24,7 +24,7 @@ public class ServicesActivity extends AppCompatActivity {
 
         ListView services_list = (ListView) findViewById(android.R.id.list);
 
-        /*
+        *//*
         final ArrayList<Service> services_array = new ArrayList<>();
         Resources resources = getResources();
         final String[] title = resources.getStringArray(R.array.service_title);
@@ -32,14 +32,14 @@ public class ServicesActivity extends AppCompatActivity {
         for (int i = 0; i < title.length; ++i) {
             services_array.add(new Service(title[i], price[i]));
         }
-        */
+        *//*
         final ArrayList<Service> services_array = new ArrayList<>();
         services_array.add(new Service("s1", 1));
 
         ServicesAdapter itemsAdapter = new ServicesAdapter(this, services_array);
         services_list.setAdapter(itemsAdapter);
 
-        /*
+        *//*
         services_list = new ArrayList<>();
 
         Resources resources = getResources();
@@ -56,7 +56,28 @@ public class ServicesActivity extends AppCompatActivity {
                 services_list
         );
         ListView listview = findViewById(android.R.id.list);
-        listview.setAdapter(adapter);*/
+        listview.setAdapter(adapter);*//*
+
+    }*/
+
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_services);
+
+        Intent intent = getIntent();
+
+        ListView services_list = (ListView) findViewById(android.R.id.list);
+
+        final ArrayList<Service> services_array = new ArrayList<>();
+        Resources resources = getResources();
+        final String[] title = resources.getStringArray(R.array.service_title);
+        final int[] price = resources.getIntArray(R.array.service_price);
+        for (int i = 0; i < title.length; ++i) {
+            services_array.add(new Service(title[i], price[i]));
+        }
+
+        ServicesAdapter itemsAdapter = new ServicesAdapter(this, services_array);
+        services_list.setAdapter(itemsAdapter);
 
     }
 }
