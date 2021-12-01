@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blue"
+    android:orientation="vertical"
+
+    >
+
+    <TextView
+        android:id="@+id/recover"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="145dp"
+        android:layout_marginEnd="0dp"
+        android:gravity="center"
+        android:text="Recover Password"
+        android:textColor="@color/white"
+        android:textSize="38dp" />
+
+    <TextView
+        android:id="@+id/desc"
+        android:layout_width="328dp"
+        android:layout_height="84dp"
+        android:layout_below="@id/recover"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="-14dp"
+        android:text="Enter your email and we'll send you
+        instructions to reset your password"
+        android:textColor="@color/blue2"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="315dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/desc"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="53dp"
+        android:layout_marginTop="14dp"
+        android:hint="Email"
+        android:textColorHint="@color/blue2"
+        android:textSize="25dp" />
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="128dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/email"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+        android:backgroundTint="@color/blue2"
+        android:padding="10dp"
+        android:text="Send"
+        android:textAllCaps="false"
+        android:textColor="@color/orange"
+        android:textSize="20dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn2"
+        android:layout_width="336dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-7dp"
+        android:layout_marginEnd="32dp"
+        android:padding="10dp"
+        android:text="@string/btn_create"
+        android:textAllCaps="false"
+        android:textColor="@color/blue2"
+        android:textSize="18dp"
+        />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="368dp"
+        android:layout_below="@id/btn"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="-6dp"
+        android:layout_marginTop="-108dp"
+        android:layout_marginBottom="0dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/stars" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_below="@id/btn"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="233dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="0dp"
+        android:src="@drawable/img" />
+
+
+</RelativeLayout>
