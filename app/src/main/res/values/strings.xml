@@ -7,13 +7,15 @@
     <string name="signin_desc">Welcome back</string>
     <string name="signin">Sign in</string>
     <string name="signup">Sign up</string>
-    <string name="forgot_pass">Forgot your password?</string>
+    <string name="forgot_pass"><u>Forgot your password?</u></string>
     <string name="hello">Hello,</string>
     <string name="signup_desc">Enter your personal details and start a journey with us</string>
     <string name="register">Register</string>
     <string name="name">Name</string>
     <string name="email">Email</string>
+    <string name="send">Send</string>
     <string name="recover">Recover Password</string>
+    <string name="create"><u>Create account</u></string>
     <string name="recover_desc">
         Enter your email and we will send you instructions to reset your password
     </string>
