@@ -25,4 +25,15 @@ public class MainActivity extends AppCompatActivity {
 
         startActivity(intent);
     }
+
+    public void RecoverPassword(View view){
+        Intent intent = new Intent(this,RecoverActivity.class);
+        startActivity(intent);
+    }
+
+    public void SignupActivity(View view){
+        Intent intent = new Intent(this,SignupActivity.class);
+        startActivity(intent);
+    }
+
 }
