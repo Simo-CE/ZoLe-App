@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
-    //public static final String EXTRA_MESSAGE = "com.smiley.yo.MESSAGE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,24 +15,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void loginActivity(View view) {
-
-        Intent intent = new Intent(this, ServicesActivity.class);
-
-        /*EditText editText = (EditText) findViewById(R.id.username);
-        String message = editText.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, message);*/
-
-        startActivity(intent);
+        Intent HomeIntent = new Intent(this, HomeActivity.class);
+        startActivity(HomeIntent);
     }
 
     public void RecoverPassword(View view){
-        Intent intent = new Intent(this,RecoverActivity.class);
-        startActivity(intent);
+        Intent recoverPassIntent = new Intent(this,RecoverActivity.class);
+        startActivity(recoverPassIntent);
     }
 
     public void SignupActivity(View view){
-        Intent intent = new Intent(this,SignupActivity.class);
-        startActivity(intent);
+        Intent signUpIntent = new Intent(this,SignupActivity.class);
+        startActivity(signUpIntent);
     }
 
 }

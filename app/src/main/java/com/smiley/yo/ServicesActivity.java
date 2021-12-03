@@ -3,14 +3,14 @@ package com.smiley.yo;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ServicesActivity extends AppCompatActivity {
 
@@ -33,4 +33,20 @@ public class ServicesActivity extends AppCompatActivity {
         ServicesAdapter itemsAdapter = new ServicesAdapter(this, services_array);
         services_list.setAdapter(itemsAdapter);
     }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.bottom_nav, menu);
+        return true;
+    }
+
+    public void onGroupItemClick(MenuItem item) {
+        // One of the group items (using the onClick attribute) was clicked
+        // The item parameter passed here indicates which item it is
+
+        // All other bottom_nav item clicks are handled by
+        // <code><a href="/reference/android/app/Activity.html#onOptionsItemSelected
+        // (android.view.MenuItem)">onOptionsItemSelected()</a></code>
+    }
+
 }

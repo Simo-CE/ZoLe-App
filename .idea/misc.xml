@@ -13,17 +13,24 @@
         <entry key="..\:/Users/medoi/AndroidStudioProjects/Yo/app/src/main/res/drawable/ic_launcher_background.xml" value="0.24114583333333334" />
         <entry key="..\:/Users/medoi/AndroidStudioProjects/Yo/app/src/main/res/drawable/pen.xml" value="0.16041666666666668" />
         <entry key="..\:/Users/medoi/AndroidStudioProjects/Yo/app/src/main/res/drawable/pen_background.xml" value="0.24114583333333334" />
+        <entry key="..\:/Users/medoi/AndroidStudioProjects/Yo/app/src/main/res/drawable/post_icon.xml" value="0.24114583333333334" />
         <entry key="..\:/Users/medoi/AndroidStudioProjects/Yo/app/src/main/res/drawable/rectangle.xml" value="0.24114583333333334" />
         <entry key="..\:/Users/medoi/AndroidStudioProjects/Yo/app/src/main/res/drawable/ser.xml" value="0.1" />
+        <entry key="..\:/Users/medoi/AndroidStudioProjects/Yo/app/src/main/res/drawable/service_item_rect.xml" value="0.24114583333333334" />
         <entry key="..\:/Users/medoi/AndroidStudioProjects/Yo/app/src/main/res/font/font.xml" value="0.17447916666666666" />
         <entry key="..\:/Users/medoi/AndroidStudioProjects/Yo/app/src/main/res/font/nunito.xml" value="0.2552083333333333" />
         <entry key="..\:/Users/medoi/AndroidStudioProjects/Yo/app/src/main/res/layout/activity_home.xml" value="0.25" />
         <entry key="..\:/Users/medoi/AndroidStudioProjects/Yo/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/medoi/AndroidStudioProjects/Yo/app/src/main/res/layout/activity_recover.xml" value="0.225" />
         <entry key="..\:/Users/medoi/AndroidStudioProjects/Yo/app/src/main/res/layout/activity_services.xml" value="0.225" />
         <entry key="..\:/Users/medoi/AndroidStudioProjects/Yo/app/src/main/res/layout/activity_services_copy.xml" value="0.225" />
+        <entry key="..\:/Users/medoi/AndroidStudioProjects/Yo/app/src/main/res/layout/activity_signin.xml" value="0.225" />
         <entry key="..\:/Users/medoi/AndroidStudioProjects/Yo/app/src/main/res/layout/activity_signup.xml" value="0.25" />
+        <entry key="..\:/Users/medoi/AndroidStudioProjects/Yo/app/src/main/res/layout/app_bar.xml" value="0.12685185185185185" />
+        <entry key="..\:/Users/medoi/AndroidStudioProjects/Yo/app/src/main/res/layout/fragment_home.xml" value="0.225" />
         <entry key="..\:/Users/medoi/AndroidStudioProjects/Yo/app/src/main/res/layout/service_item.xml" value="0.33" />
         <entry key="..\:/Users/medoi/AndroidStudioProjects/Yo/app/src/main/res/layout/services_list.xml" value="0.25" />
+        <entry key="..\:/Users/medoi/AndroidStudioProjects/Yo/app/src/main/res/menu/menu.xml" value="0.225" />
       </map>
     </option>
   </component>
