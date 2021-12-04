@@ -18,7 +18,7 @@ public class ServicesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_services);
 
-        Intent intent = getIntent();
+        //Intent intent = getIntent();
 
         ListView services_list = (ListView) findViewById(android.R.id.list);
 
@@ -34,7 +34,7 @@ public class ServicesActivity extends AppCompatActivity {
         services_list.setAdapter(itemsAdapter);
     }
 
-    public boolean onCreateOptionsMenu(Menu menu) {
+   /* public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.bottom_nav, menu);
         return true;
@@ -47,6 +47,6 @@ public class ServicesActivity extends AppCompatActivity {
         // All other bottom_nav item clicks are handled by
         // <code><a href="/reference/android/app/Activity.html#onOptionsItemSelected
         // (android.view.MenuItem)">onOptionsItemSelected()</a></code>
-    }
+    }*/
 
 }

@@ -1,10 +1,17 @@
 package com.smiley.yo;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toolbar;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -13,12 +20,14 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        //Get the intent that started this activity and extract the string
-        //Intent intent = getIntent();
-        //String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+        Intent HomeIntent = getIntent();
 
-        //Capture the layout text view and set the string as its text
-        /*TextView textView = findViewById(R.id.textView);
-        textView.setText(message);*/
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigatin_view);
+        NavController navController = Navigation.findNavController(this, R.id.nav_fragment);
+        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
+        //Setup navigation
+        NavigationUI.setupWithNavController(bottomNavigationView, navController);
+        //Linking fragment labels
+        NavigationUI.setupActionBarWithNavController(this ,navController, appBarConfiguration);
     }
 }
