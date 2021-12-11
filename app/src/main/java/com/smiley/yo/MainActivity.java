@@ -6,6 +6,24 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+/*
+api title/desc:
+    zole api
+public key:
+    dkzzktzd
+private key:
+    5d0e0984-e261-42d6-b7c2-1cbd9c9e4056
+current ip address:
+    105.67.3.13
+
+app id:
+    zole-vipwd
+
+db name:
+    ZoLeDB
+* */
+
+//Login
 public class MainActivity extends AppCompatActivity {
 
     @Override
