@@ -63,13 +63,6 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_home, container, false);
-
-        //open realm with the defaul configuration //which I did not set just yet
-        realm = Realm.getDefaultInstance();
-        //Asynchronous call //which I also have to set
-        Log.v("OpenRealm", "Successfully opened the default realm at: " + realm.getPath());
-
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 }
