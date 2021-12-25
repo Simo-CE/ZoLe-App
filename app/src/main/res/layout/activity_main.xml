@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#082032"
+    android:background="@color/dark_blue"
     tools:context=".MainActivity">
     <!--Colors:
             main dark blue: #082032
@@ -13,6 +13,29 @@
             orange: #FF4C29
             glassy white: #F6FEFF
             -->
+
+    <ImageView
+        android:id="@+id/zole_logo"
+        android:layout_width="60dp"
+        android:layout_height="21dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/zole_logo" />
+
+    <ImageView
+        android:id="@+id/background"
+        android:layout_width="682dp"
+        android:layout_height="524dp"
+        android:layout_marginTop="264dp"
+        android:clickable="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/stars" />
 
     <TextView
         android:id="@+id/welcome_back"
@@ -39,19 +62,20 @@
         android:textAllCaps="true"
         android:textColor="@color/orange"
         android:textSize="35sp"
-        app:layout_constraintStart_toStartOf="@+id/username"
+        app:layout_constraintStart_toStartOf="@+id/signin_email"
         app:layout_constraintTop_toBottomOf="@+id/welcome_back" />
 
     <EditText
-        android:id="@+id/username"
+        android:id="@+id/signin_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:fontFamily="@font/nunito_bold"
+        android:hint="@string/email"
         android:inputType="textEmailAddress"
-        android:text="@string/username"
-        android:textColor="@color/extra_light_blue"
-        android:textSize="20sp"
+        android:textColor="@color/primary_color"
+        android:textColorHint="@color/extra_light_blue"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -60,7 +84,7 @@
         app:layout_constraintVertical_bias="0.38" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/signin_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -68,11 +92,12 @@
         android:fontFamily="@font/nunito_bold"
         android:hint="@string/password"
         android:inputType="textPassword"
+        android:textColor="@color/primary_color"
         android:textColorHint="@color/extra_light_blue"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/username"
-        app:layout_constraintStart_toStartOf="@+id/username"
-        app:layout_constraintTop_toBottomOf="@+id/username" />
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/signin_email"
+        app:layout_constraintStart_toStartOf="@+id/signin_email"
+        app:layout_constraintTop_toBottomOf="@+id/signin_email" />
 
     <Button
         android:id="@+id/signin"
@@ -81,14 +106,13 @@
         android:layout_marginTop="16dp"
         android:backgroundTint="@color/extra_light_blue"
         android:fontFamily="@font/nunito_bold"
-        android:onClick="loginActivity"
         android:text="@string/signin"
         android:textAllCaps="false"
         android:textColor="@color/orange"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/password"
-        app:layout_constraintStart_toStartOf="@+id/password"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        app:layout_constraintEnd_toEndOf="@+id/signin_password"
+        app:layout_constraintStart_toStartOf="@+id/signin_password"
+        app:layout_constraintTop_toBottomOf="@+id/signin_password" />
 
     <Button
         android:id="@+id/recover_password"
@@ -111,8 +135,7 @@
         android:id="@+id/pen"
         android:layout_width="81dp"
         android:layout_height="60dp"
-        android:layout_marginStart="364dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginEnd="-20dp"
         android:backgroundTint="@color/orange"
         android:fontFamily="@font/fontsome_free_solid_900"
         android:onClick="SignupActivity"
@@ -121,48 +144,26 @@
         android:textColor="@color/dark_blue"
         android:textSize="30sp"
         app:cornerRadius="50dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/login_title" />
 
     <TextView
         android:id="@+id/left_line"
         android:layout_width="14dp"
         android:layout_height="79dp"
-        android:layout_marginTop="116dp"
-        android:layout_marginEnd="404dp"
+        android:layout_marginStart="-8dp"
+        android:layout_marginTop="-16dp"
         android:background="@drawable/footer"
         android:backgroundTint="@color/orange"
         android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/login_title" />
+
     <!--
     android:bottomRightRadius="10dp"
     android:bottomLeftRadius="10dp"
     android:topLeftRadius="10dp"
     android:topRightRadius="10dp"
     -->
-
-    <ImageView
-        android:id="@+id/zole_logo"
-        android:layout_width="60dp"
-        android:layout_height="21dp"
-        android:layout_marginBottom="16dp"
-        android:clickable="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/zole_logo" />
-
-    <ImageView
-        android:id="@+id/background"
-        android:layout_width="682dp"
-        android:layout_height="524dp"
-        android:layout_marginTop="264dp"
-        android:clickable="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/stars" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -69,4 +69,27 @@
     </integer-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="post_title">
+        <item>P1</item>
+        <item>P2</item>
+        <item>P3</item>
+        <item>P4</item>
+        <item>P5</item>
+        <item>P6</item>
+        <item>P7</item>
+        <item>P8</item>
+        <item>P9</item>
+        <item>P10</item>
+        <item>P11</item>
+        <item>P12</item>
+        <item>P13</item>
+        <item>P14</item>
+        <item>P15</item>
+        <item>P16</item>
+        <item>P17</item>
+        <item>P18</item>
+        <item>P19</item>
+        <item>P20</item>
+    </string-array>
 </resources>

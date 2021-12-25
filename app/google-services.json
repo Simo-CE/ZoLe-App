@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "631713976612",
+    "project_id": "zole-fdb",
+    "storage_bucket": "zole-fdb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:631713976612:android:4db3485fc0a92280dc63b1",
+        "android_client_info": {
+          "package_name": "com.smiley.yo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "631713976612-8d1bckeu0tcguo9qdualrb6ea7nfalue.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.smiley.yo",
+            "certificate_hash": "fdb91381cffee89aaf66c4bdd26fed154262f124"
+          }
+        },
+        {
+          "client_id": "631713976612-aoi9gpfi3jjgcaaof4lg2u94mg6lbtnb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpfN7HwS3ljkIdptzvSQ-NNE04fRJW96M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "631713976612-aoi9gpfi3jjgcaaof4lg2u94mg6lbtnb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
