@@ -14,6 +14,17 @@
                 orange: #FF4C29
                 glassy white: #F6FEFF
                 -->
+    <ImageView
+        android:id="@+id/background"
+        android:layout_width="682dp"
+        android:layout_height="524dp"
+        android:layout_marginTop="264dp"
+        android:clickable="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/stars" />
 
     <ImageView
         android:id="@+id/zole_logo"
@@ -26,19 +37,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/zole_logo" />
 
-    <ImageView
-        android:id="@+id/background"
-        android:layout_width="682dp"
-        android:layout_height="524dp"
-        android:layout_marginTop="336dp"
-        android:clickable="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.424"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/stars" />
-
-
     <TextView
         android:id="@+id/recover_password"
         android:layout_width="wrap_content"
@@ -47,7 +45,7 @@
         android:fontFamily="@font/nunito_bold"
         android:text="@string/recover"
         android:textColor="@color/white"
-        android:textSize="40sp"
+        android:textSize="35sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,8 +61,8 @@
         android:textAllCaps="false"
         android:textColor="@color/extra_light_blue"
         android:textSize="20sp"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="@+id/recover_password"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/recover_password"
         app:layout_constraintTop_toBottomOf="@+id/recover_password" />
 
@@ -77,13 +75,17 @@
         android:fontFamily="@font/nunito_bold"
         android:hint="@string/email"
         android:textColorHint="@color/extra_light_blue"
-        android:textSize="22sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.38" />
+        app:layout_constraintVertical_bias="0.38"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/primary_color"
+
+        />
 
     <Button
         android:id="@+id/send"

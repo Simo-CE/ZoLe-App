@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#082032"
+    android:background="@color/dark_blue"
     tools:context=".MainActivity">
     <!--Colors:
             main dark blue: #082032
@@ -108,7 +108,6 @@
         android:fontFamily="@font/nunito_bold"
         android:text="@string/signin"
         android:textAllCaps="false"
-        android:onClick="loginUserAccount"
         android:textColor="@color/orange"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/signin_password"
@@ -136,8 +135,7 @@
         android:id="@+id/pen"
         android:layout_width="81dp"
         android:layout_height="60dp"
-        android:layout_marginStart="240dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginEnd="-20dp"
         android:backgroundTint="@color/orange"
         android:fontFamily="@font/fontsome_free_solid_900"
         android:onClick="SignupActivity"
@@ -146,20 +144,21 @@
         android:textColor="@color/dark_blue"
         android:textSize="30sp"
         app:cornerRadius="50dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/login_title" />
 
     <TextView
         android:id="@+id/left_line"
         android:layout_width="14dp"
         android:layout_height="79dp"
-        android:layout_marginTop="116dp"
-        android:layout_marginEnd="404dp"
+        android:layout_marginStart="-8dp"
+        android:layout_marginTop="-16dp"
         android:background="@drawable/footer"
         android:backgroundTint="@color/orange"
         android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/login_title" />
+
     <!--
     android:bottomRightRadius="10dp"
     android:bottomLeftRadius="10dp"
