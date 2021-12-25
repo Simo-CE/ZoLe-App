@@ -91,23 +91,23 @@ public class PostFragment extends Fragment {
 
     //Add post with an auto-generate an ID
     public void addPost() {
-        String ptitle, pdescription;
-        ptitle = postTitle.getText().toString();
-        pdescription = postDesc.getText().toString();
+        String title, description;
+        title = postTitle.getText().toString();
+        description = postDesc.getText().toString();
 
-        if (TextUtils.isEmpty(ptitle)) {
+        if (TextUtils.isEmpty(title)) {
             Toast.makeText(getContext(), "Please enter a valid title", Toast.LENGTH_LONG).show();
             return;
         }
-        if (TextUtils.isEmpty(pdescription)) {
+        if (TextUtils.isEmpty(description)) {
             Toast.makeText(getContext(), "Provide post descritption", Toast.LENGTH_LONG).show();
             return;
         }
 
         //Setting the post document
         Map<String, Object> data = new HashMap<>();
-        data.put("title", ptitle);
-        data.put("descrition", pdescription);
+        data.put("title", title);
+        data.put("descrition", description);
 
         db.collection("posts")
                 .add(data)
@@ -115,72 +115,9 @@ public class PostFragment extends Fragment {
                     Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
                     Log.d(TAG, "Document created succesfully ");
                 })
-                .addOnFailureListener(e -> Log.w(TAG, "Error adding document", e));
+                .addOnFailureListener(e -> {
+                    Log.w(TAG, "Error adding document", e);
+                    Toast.makeText(getContext(), "DB error", Toast.LENGTH_LONG).show();
+                });
     }
-
-    /*public void addPost() {
-        // Create a new user with a first, middle, and last name
-        Map<String, Object> data = new HashMap<>();
-        data.put("first", "Alan");
-        data.put("middle", "Mathison");
-        data.put("last", "Turing");
-        data.put("born", 1912);
-
-        // Add a new document with a generated ID
-        db.collection("posts")
-                .add(data)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error adding document", e);
-                    }
-                });
-    }*/
-
-    /*//Setting posts document
-    public void setDocument() {
-        //Setting the post document
-        Map<String, Object> designPost = new HashMap<>();
-        designPost.put("title", "Design");
-        designPost.put("descrition", "Looking for a well educated tutor.");
-        designPost.put("status", "Available");
-
-        db.collection("posts").document("post")
-                .set(designPost)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d(TAG, "DocumentSnapshot successfully written!");
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error writing document", e);
-                    }
-                });
-    }*/
-
-    /*public final class PostsDB {
-        // Root collection name
-        public static final String COLLECTION_NAME = "posts";
-
-        // Document ID
-        public static final String DOCUMENT_ID = "post";
-
-        // Document field names
-        public static final String FIELD_TITLE = "title";
-        public static final String FIELD_DESCRIPTION = "description";
-        //public static final String FIELD_STATE = "state";
-
-        //To prevent someone from accidentally instantiating the contract class, make the constructor private
-        private PostsDB() {
-        }
-    }*/
 }
