@@ -1,0 +1,95 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!--Login UI strings-->
+    <string name="app_name">ZOLE</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="signin_desc">Welcome back</string>
+    <string name="signin">Sign in</string>
+    <string name="signup">Sign up</string>
+    <string name="forgot_pass"><u>Forgot your password?</u></string>
+    <string name="hello">Hello,</string>
+    <string name="signup_desc">Enter your personal details and start a journey with us</string>
+    <string name="register">Register</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="send">Send</string>
+    <string name="recover">Recover Password</string>
+    <string name="create"><u>Create account</u></string>
+    <string name="recover_desc">
+        Enter your email and we will send you instructions to reset your password
+    </string>
+
+    <!--Home UI string-->
+
+    <!--Services array items-->
+    <string-array name="service_title">
+        <item>S1</item>
+        <item>S2</item>
+        <item>S3</item>
+        <item>S4</item>
+        <item>S5</item>
+        <item>S6</item>
+        <item>S7</item>
+        <item>S8</item>
+        <item>S9</item>
+        <item>S10</item>
+        <item>S11</item>
+        <item>S12</item>
+        <item>S13</item>
+        <item>S14</item>
+        <item>S15</item>
+        <item>S16</item>
+        <item>S17</item>
+        <item>S18</item>
+        <item>S19</item>
+        <item>S20</item>
+    </string-array>
+    <integer-array name="service_price">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+    </integer-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="post_title">
+        <item>P1</item>
+        <item>P2</item>
+        <item>P3</item>
+        <item>P4</item>
+        <item>P5</item>
+        <item>P6</item>
+        <item>P7</item>
+        <item>P8</item>
+        <item>P9</item>
+        <item>P10</item>
+        <item>P11</item>
+        <item>P12</item>
+        <item>P13</item>
+        <item>P14</item>
+        <item>P15</item>
+        <item>P16</item>
+        <item>P17</item>
+        <item>P18</item>
+        <item>P19</item>
+        <item>P20</item>
+    </string-array>
+</resources>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_color"
+    tools:context=".PostFragment">
+
+    <!-- TODO: Add post to posts collection -->
+    <!-- A CardView that contains a TextView -->
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:orientation="vertical">
+
+        <!--User card-->
+        <!--<androidx.cardview.widget.CardView
+            android:id="@+id/card_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            card_view:cardCornerRadius="4dp"
+            card_view:contentPadding="10dp">
+            &lt;!&ndash;android:layout_gravity="center"&ndash;&gt;
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Profile informations" />
+        </androidx.cardview.widget.CardView>-->
+
+        <!--Post card-->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="60dp"
+            card_view:cardCornerRadius="4dp"
+            card_view:contentPadding="10dp">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Title"
+                    app:boxBackgroundColor="@color/primary_color"
+                    app:endIconMode="clear_text">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/postTitleFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:minHeight="48dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!--clever margins-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <!--clever margins-->
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxBackgroundColor="@color/primary_color"
+                    app:endIconMode="clear_text">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/postDescriptionFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:gravity="start"
+                        android:hint="Description" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!--clever margins-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <!--clever margins-->
+
+                <!--spinner button for location
+                https://stackoverflow.com/questions/34862125/
+                dropdown-buttons-spinner-like-the-ones-on-
+                the-design-specs-from-google-->
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/addPostBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center"
+                android:backgroundTint="@color/light_blue"
+                android:gravity="center"
+                android:padding="0dp"
+                android:text="add"
+                android:textColor="@color/primary_color" />
+            <!--android:contentDescription="@string/extended_fab_content_desc"-->
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <!--Add post button-->
+    <!--<androidx.appcompat.widget.AppCompatImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center|bottom"
+        android:layout_marginBottom="20dp"
+        android:padding="0dp"
+        android:src="@drawable/add_post_icon" />-->
+    <!--<androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/extended_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:layout_margin="16dp"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="@color/light_blue"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="add"
+            android:textColor="@color/primary_color" />
+        &lt;!&ndash;android:contentDescription="@string/extended_fab_content_desc"&ndash;&gt;
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>-->
+
+</FrameLayout>
