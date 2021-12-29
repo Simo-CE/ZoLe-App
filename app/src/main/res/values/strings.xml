@@ -1,6 +1,10 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!--Login UI strings-->
     <string name="app_name">ZOLE</string>
+    <string name="menu">Menu</string>
+    <string name="search">Search</string>
+    <string name="notification">Notification</string>
+    <string name="more">More</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
@@ -19,6 +23,14 @@
     <string name="recover_desc">
         Enter your email and we will send you instructions to reset your password
     </string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="description">Description</string>
+    <string name="title">Title</string>
+    <string name="state">State</string>
+    <string name="expired">Expired</string>
+    <string name="available">Available</string>
+    <string name="post_bubble">Bubble</string>
+    <string name="phone">Phone</string>
 
     <!--Home UI string-->
 
@@ -67,8 +79,6 @@
         <item>19</item>
         <item>20</item>
     </integer-array>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string-array name="post_title">
         <item>P1</item>

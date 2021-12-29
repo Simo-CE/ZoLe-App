@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -37,6 +38,15 @@ public class MainActivity extends AppCompatActivity {
         initializeUI();
         signin.setOnClickListener(v -> loginUserAccount());
     }
+
+    // Menu icons are inflated just as they were with actionbar
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.app_bar, menu);
+        return true;
+    }
+
 
     @Override
     public void onStart() {

@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/primary_color"
     tools:context=".HomeFragment">
 
-    <!--<androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_margin="20dp">
 
-        <androidx.recyclerview.widget.RecyclerView
+        <!--<androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvPosts"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -19,9 +21,106 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            />
-        &lt;!&ndash;tools:listitem="@layout/item_post"&ndash;&gt;
+            tools:listitem="@layout/item_post"
+            />-->
 
-    </androidx.constraintlayout.widget.ConstraintLayout>-->
+        <!--<androidx.cardview.widget.CardView
+            android:id="@+id/home_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            card_view:cardCornerRadius="4dp"
+            card_view:contentPadding="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/home_bubble"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="4dp"
+                    android:contentDescription="@string/post_bubble"
+                    android:background="@drawable/header_cercle"
+                    android:backgroundTint="@color/orange"/>
+
+                <TextView
+                    android:id="@+id/home_post_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="20dp"
+                    android:hint="@string/title"
+                    android:layout_toStartOf="@+id/home_post_state"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@id/home_post_state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:hint="@string/state"/>
+
+                <TextView
+                    android:id="@+id/home_post_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/home_post_title"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:hint="@string/description"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/home_post_email"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/home_post_description"
+                    android:layout_alignParentStart="true"
+                    android:layout_toStartOf="@+id/home_post_state"
+                    android:hint="@string/email"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@id/home_post_state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/home_post_description"
+                    android:layout_alignParentEnd="true"
+                    android:hint="@string/phone"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                &lt;!&ndash;<Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/home_post_email"
+                    android:layout_alignParentEnd="true"
+                    android:text="P.Number" />&ndash;&gt;
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>-->
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/home_post_list"
+            android:layout_width="369dp"
+            android:layout_height="689dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".HomeActivity">
 
+    <!--Bottom navigation-->
     <fragment
         android:id="@+id/nav_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
@@ -17,7 +18,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/nav_graph" />
-
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigatin_view"
@@ -32,8 +32,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:menu="@menu/bottom_nav" />
-    <!--android:background="?android:attr/windowBackground"-->
-
-
+    <!--End Bottom navigation-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

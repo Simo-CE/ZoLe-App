@@ -4,17 +4,67 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
+
+
+public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder> {
+
+    Context context;
+    ArrayList<Post> postArrayList;
+
+    public PostAdapter(Context context, ArrayList<Post> postArrayList) {
+        this.context = context;
+        this.postArrayList = postArrayList;
+    }
+
+    @NonNull
+    @Override
+    public PostAdapter.PostViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+        View view = LayoutInflater.from(context).inflate(R.layout.home_post_item, parent, false);
+
+        return new PostViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull PostAdapter.PostViewHolder holder, int position) {
+
+        Post post = postArrayList.get(position);
+
+        holder.title.setText(post.title);
+        //holder.title.setText(post.getTitle());
+        holder.descrition.setText(post.descrition);
+    }
+
+    @Override
+    public int getItemCount() {
+        return postArrayList.size();
+    }
+
+    public static class PostViewHolder extends RecyclerView.ViewHolder{
+
+        TextView title, descrition;
+
+        public PostViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            title = itemView.findViewById(R.id.home_post_title);
+            descrition = itemView.findViewById(R.id.home_post_description);
+        }
+    }
+}
+
 
 // Create the basic adapter extending from RecyclerView.Adapter
 // Note that we specify the custom ViewHolder which gives us access to our views
-public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> {
+/*
+public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
     // Provide a direct reference to each of the views within a data item
     // Used to cache the views within the item layout for fast access
@@ -42,14 +92,14 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
     private List<Post> mPost;
 
     // Pass in the post array into the constructor
-    public PostsAdapter(List<Post> posts) {
+    public PostAdapter(List<Post> posts) {
         mPost = posts;
     }
 
 
     // Usually involves inflating a layout from XML and returning the holder
     @Override
-    public PostsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public PostAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
         // Inflate the custom layout
@@ -62,7 +112,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
     // Involves populating data into the item through holder
     @Override
-    public void onBindViewHolder(PostsAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(PostAdapter.ViewHolder holder, int position) {
         // Get the data model based on position
         Post post = mPost.get(position);
 
@@ -70,12 +120,14 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         TextView titleView = holder.titleTextView;
         titleView.setText(post.getTitle());
         TextView statusView = holder.statusTextView;
-        statusView.setText(post.getStatus() ? "Available" : "Expired");
-        statusView.setEnabled(post.getStatus());
+        statusView.setText(post.isStatus() ? "Available" : "Expired");
+        statusView.setEnabled(post.isStatus());
 
-        /*Button button = holder.messageButton;
+        */
+/*Button button = holder.messageButton;
         button.setText(contact.isOnline() ? "Message" : "Offline");
-        button.setEnabled(contact.isOnline());*/
+        button.setEnabled(contact.isOnline());*//*
+
     }
 
     // Returns the total count of items in the list
@@ -85,3 +137,4 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
     }
 
 }
+*/
