@@ -1,16 +1,24 @@
 package com.smiley.yo;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import io.realm.Realm;
-import io.realm.RealmConfiguration;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,7 +26,14 @@ import io.realm.RealmConfiguration;
  * create an instance of this fragment.
  */
 public class HomeFragment extends Fragment {
-    private Realm realm;
+
+    RecyclerView recyclerView;
+    ArrayList<Post> postArrayList;
+    PostAdapter postAdapter;
+    FirebaseFirestore db;
+    private static final String TAG = "HomeFragment Retrieving posts error";
+
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -63,6 +78,38 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        recyclerView = view.findViewById(R.id.home_post_list);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        db = FirebaseFirestore.getInstance();
+        postArrayList = new ArrayList<Post>();
+        postAdapter = new PostAdapter(getContext(), postArrayList);
+
+        recyclerView.setAdapter(postAdapter);
+
+        PostsListener();
+
+        return view;
+    }
+
+    private void PostsListener() {
+        db.collection("posts")
+                .addSnapshotListener((value, e) -> {
+                    if (e != null) {
+                        Log.w(TAG, "Listen failed.", e);
+                        return;
+                    }
+
+                    //List<String> posts = new ArrayList<>();
+                    for (DocumentChange doc : value.getDocumentChanges()) {
+                        if (doc.getType() == DocumentChange.Type.ADDED){
+                            postArrayList.add(doc.getDocument().toObject(Post.class));
+                        }
+                    }
+                    postAdapter.notifyDataSetChanged();
+                });
     }
 }

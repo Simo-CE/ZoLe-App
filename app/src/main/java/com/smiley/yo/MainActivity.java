@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,6 +39,15 @@ public class MainActivity extends AppCompatActivity {
         signin.setOnClickListener(v -> loginUserAccount());
     }
 
+    // Menu icons are inflated just as they were with actionbar
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.app_bar, menu);
+        return true;
+    }
+
+
     @Override
     public void onStart() {
         super.onStart();
@@ -71,9 +81,8 @@ public class MainActivity extends AppCompatActivity {
                         FirebaseUser user = mAuth.getCurrentUser();
                         updateUI(user);
 
-                        /*Intent HomeIntent = new Intent(MainActivity.this, HomeActivity.class);
-                        startActivity(HomeIntent);*/
                         startActivity(new Intent(MainActivity.this, HomeActivity.class));
+                        finish();
 
                     } else {
                         // If sign in fails, display a message to the user.

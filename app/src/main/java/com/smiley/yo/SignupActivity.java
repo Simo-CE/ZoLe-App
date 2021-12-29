@@ -34,10 +34,15 @@ public class SignupActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         mAuth = FirebaseAuth.getInstance();
-
         initializeUI();
-
         signup.setOnClickListener(v -> createAccount());
+    }
+
+    private void initializeUI() {
+        aname = findViewById(R.id.signup_name);
+        aemail = findViewById(R.id.signup_email);
+        apassword = findViewById(R.id.signup_password);
+        signup = findViewById(R.id.signup);
     }
 
     private void createAccount() {
@@ -46,6 +51,7 @@ public class SignupActivity extends AppCompatActivity {
         email = aemail.getText().toString();
         password = apassword.getText().toString();
 
+        //check empty field
         if (TextUtils.isEmpty(name)) {
             Toast.makeText(getApplicationContext(), "Name required", Toast.LENGTH_LONG).show();
             return;
@@ -58,6 +64,7 @@ public class SignupActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Enter a valid password!", Toast.LENGTH_LONG).show();
             return;
         }
+        //end check empty field
 
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
@@ -67,9 +74,8 @@ public class SignupActivity extends AppCompatActivity {
                         FirebaseUser user = mAuth.getCurrentUser();
                         updateUI(user);
 
-                        /*Intent HomeIntent = new Intent(this, HomeActivity.class);
-                        startActivity(HomeIntent);*/
                         startActivity(new Intent(SignupActivity.this, MainActivity.class));
+                        finish();
 
                     } else {
                         // If sign in fails, display a message to the user.
@@ -82,12 +88,5 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     private void updateUI(FirebaseUser user) {
-    }
-
-    private void initializeUI() {
-        aname = findViewById(R.id.signup_name);
-        aemail = findViewById(R.id.signup_email);
-        apassword = findViewById(R.id.signup_password);
-        signup = findViewById(R.id.signup);
     }
 }
