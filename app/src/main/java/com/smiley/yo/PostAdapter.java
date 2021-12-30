@@ -39,7 +39,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
         holder.title.setText(post.title);
         //holder.title.setText(post.getTitle());
-        holder.descrition.setText(post.descrition);
+        holder.description.setText(post.description);
     }
 
     @Override
@@ -49,13 +49,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
     public static class PostViewHolder extends RecyclerView.ViewHolder{
 
-        TextView title, descrition;
+        TextView title, description;
 
         public PostViewHolder(@NonNull View itemView) {
             super(itemView);
 
             title = itemView.findViewById(R.id.home_post_title);
-            descrition = itemView.findViewById(R.id.home_post_description);
+            description = itemView.findViewById(R.id.home_post_description);
         }
     }
 }
