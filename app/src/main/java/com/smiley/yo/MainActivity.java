@@ -23,7 +23,7 @@ import java.util.Map;
 //Login
 public class MainActivity extends AppCompatActivity {
 
-    private static final String TAG = "EmailPassword";
+    private static final String TAG = "Login";
 
     private EditText aemail, apassword;
     private Button signin;
@@ -58,10 +58,14 @@ public class MainActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+        /*FirebaseUser currentUser = mAuth.getCurrentUser();
         updateUI(currentUser);
         if (currentUser != null) {
             reload();
+        }*/
+        if(mAuth.getCurrentUser() != null) {
+            startActivity(new Intent(this, HomeActivity.class));
+            finish();
         }
     }
 
