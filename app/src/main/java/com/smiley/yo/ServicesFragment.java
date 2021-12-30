@@ -2,11 +2,24 @@ package com.smiley.yo;
 
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -15,6 +28,11 @@ import android.view.ViewGroup;
  */
 public class ServicesFragment extends Fragment {
 
+    private static final String TAG = "ServicesFragment LOG";
+    RecyclerView recyclerView;
+    List<Service> List1;
+    ServiceAdapter myAdapter;
+    FirebaseFirestore db;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -59,6 +77,33 @@ public class ServicesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_services, container, false);
+        View view = inflater.inflate(R.layout.fragment_services, container, false);
+        recyclerView=view.findViewById(R.id.recyclerView);
+        db= FirebaseFirestore.getInstance();
+        List1=new ArrayList<>();
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        myAdapter=new ServiceAdapter(List1,getContext());
+        // database.keepSynced(true);
+
+
+        recyclerView.setAdapter(myAdapter);
+        db.collection("services")
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                        if(error != null){
+                            Log.e("Firestore error",error.getMessage());
+                            return;
+                        }
+                        for(DocumentChange dc:value.getDocumentChanges()){
+                            if(dc.getType()== DocumentChange.Type.ADDED){
+                                List1.add(dc.getDocument().toObject(Service.class));
+                            }
+                            myAdapter.notifyDataSetChanged();
+                        }
+                    }
+                });
+        return view;
     }
 }

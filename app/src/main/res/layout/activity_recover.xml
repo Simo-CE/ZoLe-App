@@ -94,7 +94,7 @@
         android:layout_marginTop="16dp"
         android:backgroundTint="@color/extra_light_blue"
         android:fontFamily="@font/nunito_bold"
-        android:onClick="loginActivity"
+
         android:text="@string/send"
         android:textAllCaps="false"
         android:textColor="@color/orange"
