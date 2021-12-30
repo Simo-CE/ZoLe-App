@@ -107,7 +107,7 @@ public class PostFragment extends Fragment {
         //Setting the post document
         Map<String, Object> data = new HashMap<>();
         data.put("title", title);
-        data.put("descrition", description);
+        data.put("description", description);
 
         db.collection("posts")
                 .add(data)

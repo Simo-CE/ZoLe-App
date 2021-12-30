@@ -14,6 +14,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 //Login
 public class MainActivity extends AppCompatActivity {
@@ -29,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Intent backToLoginIntent = getIntent();
 
         //Hiding the appbar
         getSupportActionBar().hide();
@@ -65,11 +71,11 @@ public class MainActivity extends AppCompatActivity {
         password = apassword.getText().toString();
 
         if (TextUtils.isEmpty(email)) {
-            Toast.makeText(getApplicationContext(), "Please enter email", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Email required", Toast.LENGTH_LONG).show();
             return;
         }
         if (TextUtils.isEmpty(password)) {
-            Toast.makeText(getApplicationContext(), "Please enter password!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Password required!", Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -114,12 +120,6 @@ public class MainActivity extends AppCompatActivity {
                     // Email sent
                 });
     }
-
-    //Intents
-    /*public void loginActivity(View view) {
-        Intent HomeIntent = new Intent(this, HomeActivity.class);
-        startActivity(HomeIntent);
-    }*/
 
     public void RecoverPassword(View view) {
         Intent recoverPassIntent = new Intent(this, RecoverActivity.class);
