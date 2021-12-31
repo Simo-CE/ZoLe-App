@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    tools:context=".AddServiceFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="top"
+            android:layout_marginBottom="33dp"
+            android:gravity="center"
+            android:text="Add your personal service"
+            android:textColor="@color/light_blue"
+            android:textSize="19sp"
+            app:layout_constraintBottom_toTopOf="@+id/nameServ"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.809" />
+
+        <EditText
+            android:id="@+id/nameServ"
+            android:layout_width="256dp"
+            android:layout_height="36dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:hint="name"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            app:layout_constraintBottom_toTopOf="@+id/PriceServ"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/PriceServ"
+            android:layout_width="265dp"
+            android:layout_height="37dp"
+            android:layout_below="@id/nameServ"
+            android:layout_marginBottom="25dp"
+            android:hint="price"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            app:layout_constraintBottom_toTopOf="@+id/DescServ"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/DescServ"
+            android:layout_width="260dp"
+            android:layout_height="37dp"
+            android:layout_below="@id/PriceServ"
+            android:layout_margin="10dp"
+            android:layout_marginBottom="38dp"
+            android:hint="description"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:rotationX="-27"
+            app:layout_constraintBottom_toTopOf="@+id/btnadd"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/btnadd"
+            android:layout_width="138dp"
+            android:layout_height="53dp"
+            android:layout_below="@id/DescServ"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:backgroundTint="@color/extra_light_blue"
+            android:gravity="center"
+            android:importantForAutofill="no"
+            android:text="Add Service"
+            android:textAllCaps="false"
+            app:cornerRadius="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.641" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
