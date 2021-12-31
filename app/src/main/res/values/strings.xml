@@ -34,6 +34,13 @@
 
     <!--Home UI string-->
 
+    <!--Profile UI string-->
+    <string name="user_name">John Doe</string>
+    <string name="user_type">Tutor</string>
+    <string name="user_desc">Nice short pitch about the tutor or maybe something else</string>
+    <string name="user_location">Taroudant, Morocco</string>
+    <string name="user_phone">06X-XXXXXXXXX</string>
+    <string name="user_email">JohnDoe@gmail.com</string>
     <!--Services array items-->
     <string-array name="service_title">
         <item>S1</item>
