@@ -2,9 +2,9 @@ package com.smiley.yo;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -13,19 +13,15 @@ import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeActivity extends AppCompatActivity {
+    //private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
         Intent HomeIntent = getIntent();
 
-
         //Top app bar
-        /*// Find the toolbar view inside the activity layout
-        Toolbar toolbar = (Toolbar) findViewById(R.id.topAppBar);
-        // Sets the Toolbar to act as the ActionBar for this Activity window.
-        // Make sure the toolbar exists in the activity and is not null
+        /*toolbar = findViewById(R.id.topAppBar);
         setSupportActionBar(toolbar);*/
 
         //Bottom navigation
@@ -34,9 +30,18 @@ public class HomeActivity extends AppCompatActivity {
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         //Setup navigation
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
+
         //Linking fragment labels
-        NavigationUI.setupActionBarWithNavController(this ,navController, appBarConfiguration);
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         //End Bottom navigation
     }
 
+    // Menu icons are inflated just as they were with actionbar
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.app_bar, menu);
+        return true;
+    }
 }

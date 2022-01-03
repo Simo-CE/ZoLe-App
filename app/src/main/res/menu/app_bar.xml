@@ -11,9 +11,15 @@
         android:icon="@drawable/icon_notification"
         android:title="@string/notification"
         app:showAsAction="always" />
-    <item
+    <group
         android:id="@+id/toolsMenu"
         android:icon="@drawable/icon_more"
         android:title="@string/menu"
-        app:showAsAction="always" />
+        app:showAsAction="always">
+        <item
+            android:id="@+id/logoutMenu"
+            android:title="@string/logout"
+            app:showAsAction="never" />
+    </group>
+
 </menu>

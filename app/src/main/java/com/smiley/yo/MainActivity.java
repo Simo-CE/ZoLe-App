@@ -11,14 +11,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.util.HashMap;
-import java.util.Map;
 
 //Login
 public class MainActivity extends AppCompatActivity {
@@ -37,22 +34,13 @@ public class MainActivity extends AppCompatActivity {
         Intent backToLoginIntent = getIntent();
 
         //Hiding the appbar
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
 
         //Inializing firebase authentication
         mAuth = FirebaseAuth.getInstance();
         initializeUI();
         signin.setOnClickListener(v -> loginUserAccount());
     }
-
-    // Menu icons are inflated just as they were with actionbar
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.app_bar, menu);
-        return true;
-    }
-
 
     @Override
     public void onStart() {

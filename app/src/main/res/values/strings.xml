@@ -31,5 +31,8 @@
     <string name="available">Available</string>
     <string name="post_bubble">Bubble</string>
     <string name="phone">Phone</string>
-
+    <string name="post">Post</string>
+    <string name="service">Service</string>
+    <string name="location">Location</string>
+    <string name="logout">Log out</string>
 </resources>
