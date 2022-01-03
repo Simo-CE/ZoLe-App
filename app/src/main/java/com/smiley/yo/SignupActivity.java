@@ -10,8 +10,15 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -21,7 +28,7 @@ public class SignupActivity extends AppCompatActivity {
     private Button signup;
 
     private FirebaseAuth mAuth;
-
+    FirebaseFirestore db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,13 +72,24 @@ public class SignupActivity extends AppCompatActivity {
             return;
         }
         //end check empty field
-
+        db= FirebaseFirestore.getInstance();
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
                         // Sign in success, update UI with the signed-in user's information
                         Log.d(TAG, "createUserWithEmail:success");
                         FirebaseUser user = mAuth.getCurrentUser();
+                        assert user != null;
+                        DocumentReference dc=db.collection("User").document(user.getUid());
+                        Map<String, Object> dataUser = new HashMap<>();
+                        dataUser.put("FullName", name);
+                        dataUser.put("email", email);
+                        dc.set(dataUser).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(@NonNull Void unused) {
+                                Toast.makeText(SignupActivity.this, "add user to firestore", Toast.LENGTH_SHORT).show();
+                            }
+                        });
                         updateUI(user);
 
                         startActivity(new Intent(SignupActivity.this, MainActivity.class));

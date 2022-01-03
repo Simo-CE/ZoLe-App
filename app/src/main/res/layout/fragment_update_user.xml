@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".UpdateUserFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/user_image_profile"
+        android:layout_width="95dp"
+        android:layout_height="84dp"
+        android:layout_marginTop="56dp"
+        android:layout_centerHorizontal="true"
+        android:clickable="true"
+        />
+
+    <EditText
+        android:id="@+id/user_name_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Name"
+        android:layout_marginTop="28dp"
+        android:layout_below="@id/user_image_profile"
+        />
+
+    <EditText
+        android:id="@+id/user_email_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:layout_below="@id/user_name_profile"
+        android:layout_marginTop="28dp"
+        />
+
+    <EditText
+        android:id="@+id/user_location_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/user_email_profile"
+        android:hint="Location"
+        android:layout_marginTop="28dp"
+         />
+
+    <EditText
+        android:id="@+id/user_desc_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/user_location_profile"
+        android:hint="Description"
+        android:layout_marginTop="28dp"
+        tools:layout_editor_absoluteX="107dp" />
+
+    <EditText
+        android:id="@+id/user_phone_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:hint="phone"
+        android:layout_below="@id/user_desc_profile" />
+
+    <Button
+        android:id="@+id/btn_update_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/user_phone_profile"
+        android:layout_centerHorizontal="true"
+        android:text="Update now!"
+        />
+</RelativeLayout>
+</FrameLayout>
