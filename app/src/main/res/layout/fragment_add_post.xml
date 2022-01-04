@@ -9,8 +9,11 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="20dp">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp">
         <!--Post card-->
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
@@ -20,7 +23,6 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="10dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/addPostBtn"
             app:layout_constraintTop_toTopOf="parent"
             card_view:cardCornerRadius="4dp"
             card_view:contentPadding="10dp">
@@ -30,79 +32,119 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <!--Title field-->
-                <com.google.android.material.textfield.TextInputLayout
+                <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Title"
-                    app:boxBackgroundColor="@color/primary_color"
-                    app:endIconMode="clear_text">
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/postTitleFragment"
+                    <!--Title field-->
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="start"
-                        android:minHeight="48dp" />
+                        android:hint="@string/title"
+                        app:boxBackgroundColor="@color/primary_color"
+                        app:endIconMode="clear_text">
 
-                </com.google.android.material.textfield.TextInputLayout>
-                <!--End Title field-->
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/postTitleFragment"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="start"
+                            android:minHeight="48dp" />
 
-                <!--clever margins-->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <!--clever margins-->
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <!--End Title field-->
 
-                <!--Description field-->
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:boxBackgroundColor="@color/primary_color"
-                    app:endIconMode="clear_text">
+                    <!--clever margins-->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <!--clever margins-->
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/postDescriptionFragment"
+                    <!--Description field-->
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="top"
-                        android:hint="@string/description"
-                        android:inputType="text|textMultiLine"
-                        android:lines="6"
-                        android:minLines="6"
-                        android:scrollbars="vertical" />
+                        app:boxBackgroundColor="@color/primary_color"
+                        app:endIconMode="clear_text">
 
-                </com.google.android.material.textfield.TextInputLayout>
-                <!--End Description field-->
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/postDescriptionFragment"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="top"
+                            android:hint="@string/description"
+                            android:inputType="text|textMultiLine"
+                            android:lines="6"
+                            android:minLines="6"
+                            android:scrollbars="vertical" />
 
-                <!--clever margins-->
-                <TextView
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <!--End Description field-->
+
+                    <!--clever margins-->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <!--clever margins-->
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <RelativeLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <!--clever margins-->
+                    android:layout_height="wrap_content">
+                    <!--Title field-->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_toStartOf="@+id/postLevelSpinner"
+                        android:hint="@string/location"
+                        app:boxBackgroundColor="@color/primary_color"
+                        app:endIconMode="clear_text">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/postLocation"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="start"
+                            android:minHeight="48dp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <!--End Title field-->
+
+                    <Spinner
+                        android:id="@+id/postLevelSpinner"
+                        android:layout_width="130dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentEnd="true" />
+
+                </RelativeLayout>
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
         </androidx.cardview.widget.CardView>
         <!--End Post card-->
 
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-            android:id="@+id/addPostBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="60dp"
-            android:backgroundTint="@color/light_blue"
-            android:gravity="center"
-            android:padding="0dp"
-            android:text="Post"
-            android:textColor="@color/primary_color"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/addPostBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="60dp"
+        android:backgroundTint="@color/light_blue"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/post"
+        android:textAllCaps="false"
+        android:textColor="@color/primary_color"
+        app:cornerRadius="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </FrameLayout>

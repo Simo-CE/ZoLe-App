@@ -149,22 +149,22 @@
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/extra_light_blue"
+        android:layout_width="415dp"
+        android:layout_height="54dp"
         android:layout_margin="12dp"
-        app:tabTextColor="@color/primary_color"
+        android:background="@color/extra_light_blue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardViewProfile">
+        app:layout_constraintTop_toBottomOf="@+id/cardViewProfile"
+        app:tabTextColor="@color/primary_color">
 
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager"
-        android:layout_width="391dp"
-        android:layout_height="482dp"
+        android:layout_width="match_parent"
+        android:layout_height="468dp"
         android:background="@color/extra_light_blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
