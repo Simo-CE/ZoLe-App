@@ -32,6 +32,7 @@
     <string name="post_bubble">Bubble</string>
     <string name="phone">Phone</string>
 
+
     <!--Home UI string-->
 
     <!--Profile UI string-->
@@ -109,4 +110,5 @@
         <item>P19</item>
         <item>P20</item>
     </string-array>
+
 </resources>

@@ -19,7 +19,7 @@
         android:id="@+id/postFragment"
         android:name="com.smiley.yo.PostFragment"
         android:label="Post"
-        tools:layout="@layout/fragment_post" />
+        tools:layout="@layout/fragment_add" />
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.smiley.yo.ProfileFragment"

@@ -103,7 +103,7 @@ public class UpdateUserFragment extends Fragment {
             if(user.getEmail() != null){
                 Edituser_email.setText(user.getEmail());
             }
-            DocumentReference documentReference=db.collection("User").document(user.getUid());
+            DocumentReference documentReference=db.collection("Users").document(user.getUid());
             documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
                 @Override
                 public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -147,13 +147,13 @@ public class UpdateUserFragment extends Fragment {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            DocumentReference dc=db.collection("User").document(user.getUid());
+                            DocumentReference dc=db.collection("Users").document(user.getUid());
                             Map<String, Object> dataUser = new HashMap<>();
                             dataUser.put("FullName", UserName);
                             dataUser.put("Phone", UserPhone);
                             dataUser.put("Location", UserLocation);
                             dataUser.put("Description", UserDesc);
-                            dataUser.put("email", UserEmail);
+                            dataUser.put("Email", UserEmail);
                             dc.update(dataUser)
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override

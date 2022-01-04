@@ -94,19 +94,16 @@ public class ProfileSerFragment extends Fragment {
         btnadd1 = v.findViewById(R.id.btnaddser);
         btnadd1.setOnClickListener(view -> addService());
         db.collection("services")
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @Override
-                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                        if(error != null){
-                            Log.e("Firestore error",error.getMessage());
-                            return;
+                .addSnapshotListener((value, error) -> {
+                    if(error != null){
+                        Log.e("Firestore error",error.getMessage());
+                        return;
+                    }
+                    for(DocumentChange dc:value.getDocumentChanges()){
+                        if(dc.getType()== DocumentChange.Type.ADDED){
+                            List.add(dc.getDocument().toObject(Service.class));
                         }
-                        for(DocumentChange dc:value.getDocumentChanges()){
-                            if(dc.getType()== DocumentChange.Type.ADDED){
-                                List.add(dc.getDocument().toObject(Service.class));
-                            }
-                            RVAdapter.notifyDataSetChanged();
-                        }
+                        RVAdapter.notifyDataSetChanged();
                     }
                 });
 

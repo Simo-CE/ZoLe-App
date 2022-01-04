@@ -1,17 +1,19 @@
 package com.smiley.yo;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -22,13 +24,14 @@ import java.util.Map;
 
 public class SignupActivity extends AppCompatActivity {
 
-    private static final String TAG = "EmailPassword";
+    private static final String TAG = "SignUp Activity Tag: ";
 
     private EditText aname, aemail, apassword;
     private Button signup;
 
     private FirebaseAuth mAuth;
-    FirebaseFirestore db;
+    private FirebaseFirestore db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +44,7 @@ public class SignupActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
         initializeUI();
         signup.setOnClickListener(v -> createAccount());
     }
@@ -78,10 +82,25 @@ public class SignupActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         // Sign in success, update UI with the signed-in user's information
                         Log.d(TAG, "createUserWithEmail:success");
+                        Toast.makeText(SignupActivity.this, "Account created successfully",
+                                Toast.LENGTH_SHORT).show();
+                        //Extract user
                         FirebaseUser user = mAuth.getCurrentUser();
+                        //Store in Users collection
+                        DocumentReference df = db.collection("Users").document(user.getUid());
+                        Map<String, Object> userInfo = new HashMap<>();
+                        userInfo.put("FullName", name);
+                        userInfo.put("Email", email);
+                        userInfo.put("isUser", "1");
+                        //Add to firestore
+                        df.set(userInfo).addOnSuccessListener(documentReference -> {
+                            Log.d(TAG, "User stored succesfully ");
+                        }).addOnFailureListener(e -> {
+                            Log.w(TAG, "Error adding User", e);
+                        });
                         updateUI(user);
 
-                        startActivity(new Intent(SignupActivity.this, MainActivity.class));
+                        startActivity(new Intent(SignupActivity.this, HomeActivity.class));
                         finish();
 
                     } else {
@@ -95,5 +114,10 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     private void updateUI(FirebaseUser user) {
+    }
+
+    public void BackToLogin(View view) {
+        Intent backToLoginIntent = new Intent(this, MainActivity.class);
+        startActivity(backToLoginIntent);
     }
 }

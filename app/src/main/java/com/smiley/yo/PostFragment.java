@@ -9,8 +9,12 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -24,6 +28,10 @@ import java.util.Map;
  */
 public class PostFragment extends Fragment {
 
+    TabLayout tabLayout;
+    ViewPager2 viewPager;
+    AddPagerAdapter pagerAdapter;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -32,11 +40,6 @@ public class PostFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
-    private TextInputEditText postTitle, postDesc;
-    private ExtendedFloatingActionButton addPostBtn;
-    private FirebaseFirestore db;
-    private static final String TAG = "PostsFragment LOG";
 
     public PostFragment() {
         // Required empty public constructor
@@ -74,50 +77,42 @@ public class PostFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_post, container, false);
+        View v = inflater.inflate(R.layout.fragment_add, container, false);
 
-        //Initializing cloud firestore
-        db = FirebaseFirestore.getInstance();
-        initializeUI(v);
-        addPostBtn.setOnClickListener(view -> addPost());
+        tabLayout = v.findViewById(R.id.add_tab_layout);
+        viewPager = v.findViewById(R.id.add_pager);
+
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        pagerAdapter = new AddPagerAdapter(fragmentManager, getLifecycle());
+        viewPager.setAdapter(pagerAdapter);
+
+        tabLayout.addTab(tabLayout.newTab().setText("Post"));
+        tabLayout.addTab(tabLayout.newTab().setText("Service"));
+
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                tabLayout.selectTab(tabLayout.getTabAt(position));
+            }
+        });
+
         return v;
-    }
-
-    private void initializeUI(View v) {
-        postTitle = v.findViewById(R.id.postTitleFragment);
-        postDesc = v.findViewById(R.id.postDescriptionFragment);
-        addPostBtn = v.findViewById(R.id.addPostBtn);
-    }
-
-    //Add post with an auto-generate an ID
-    public void addPost() {
-        String title, description;
-        title = postTitle.getText().toString();
-        description = postDesc.getText().toString();
-
-        if (TextUtils.isEmpty(title)) {
-            Toast.makeText(getContext(), "Please enter a valid title", Toast.LENGTH_LONG).show();
-            return;
-        }
-        if (TextUtils.isEmpty(description)) {
-            Toast.makeText(getContext(), "Provide post descritption", Toast.LENGTH_LONG).show();
-            return;
-        }
-
-        //Setting the post document
-        Map<String, Object> data = new HashMap<>();
-        data.put("title", title);
-        data.put("descrition", description);
-
-        db.collection("posts")
-                .add(data)
-                .addOnSuccessListener(documentReference -> {
-                    Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
-                    Log.d(TAG, "Document created succesfully ");
-                })
-                .addOnFailureListener(e -> {
-                    Log.w(TAG, "Error adding document", e);
-                    Toast.makeText(getContext(), "DB error", Toast.LENGTH_LONG).show();
-                });
     }
 }

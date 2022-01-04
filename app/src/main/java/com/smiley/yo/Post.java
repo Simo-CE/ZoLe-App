@@ -8,15 +8,15 @@ Using a RecyclerView has the following key steps:
     Bind the adapter to the data source to populate the RecyclerView
 */
 public class Post {
-    String title, descrition;
+    String title, description;
     //private boolean status;
 
     public Post() {
     }
 
-    public Post(String title, String descrition/*, boolean status*/) {
+    public Post(String title, String description/*, boolean status*/) {
         this.title = title;
-        this.descrition = descrition;
+        this.description = description;
         //this.status = status;
     }
 
@@ -28,12 +28,12 @@ public class Post {
         this.title = title;
     }
 
-    public String getDescrition() {
-        return descrition;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescrition(String descrition) {
-        this.descrition = descrition;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     /*public boolean isStatus() {
