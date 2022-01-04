@@ -16,15 +16,15 @@ public class AddPagerAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position){
             case 1:
-                return new AddPostFragment();
-            case 2:
                 return new AddServiceFragment();
+            default:
+                return new AddPostFragment();
+
         }
-        return new AddPostFragment();
     }
 
     @Override
     public int getItemCount() {
-        return 3;
+        return 2;
     }
 }

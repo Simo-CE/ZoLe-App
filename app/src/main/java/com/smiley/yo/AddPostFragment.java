@@ -1,20 +1,24 @@
 package com.smiley.yo;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import androidx.fragment.app.Fragment;
+
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,11 +27,13 @@ import java.util.Map;
  * Use the {@link AddPostFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AddPostFragment extends Fragment {
+public class AddPostFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
-    private TextInputEditText postTitle, postDesc;
-    private ExtendedFloatingActionButton addPostBtn;
+    private TextInputEditText postTitle, postDesc, postLocation;
+    private MaterialButton addPostBtn;
     private FirebaseFirestore db;
+    String[] level = {"Beginner", "Intermediate", "Expert"};
+    private String requiredLevel;
     private static final String TAG = "PostsFragment LOG";
 
     // TODO: Rename parameter arguments, choose names that match
@@ -74,7 +80,21 @@ public class AddPostFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_add, container, false);
+        View v = inflater.inflate(R.layout.fragment_add_post, container, false);
+
+        //spinner
+        Spinner postSpinner = v.findViewById(R.id.postLevelSpinner);
+        postSpinner.setOnItemSelectedListener(this);
+        // Create the instance of ArrayAdapter
+        // having the list of courses
+        ArrayAdapter ad = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, level);
+        // set simple layout resource file
+        // for each item of spinner
+        ad.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // Set the ArrayAdapter (ad) data on the
+        // Spinner which binds data to spinner
+        postSpinner.setAdapter(ad);
 
         //Initializing cloud firestore
         db = FirebaseFirestore.getInstance();
@@ -86,14 +106,17 @@ public class AddPostFragment extends Fragment {
     private void initializeUI(View v) {
         postTitle = v.findViewById(R.id.postTitleFragment);
         postDesc = v.findViewById(R.id.postDescriptionFragment);
+        postLocation = v.findViewById(R.id.postLocation);
         addPostBtn = v.findViewById(R.id.addPostBtn);
     }
 
     //Add post with an auto-generate an ID
     public void addPost() {
-        String title, description;
+        String title, description, location, requiredLevel;
         title = postTitle.getText().toString();
         description = postDesc.getText().toString();
+        location = postLocation.getText().toString();
+        requiredLevel = this.requiredLevel;
 
         if (TextUtils.isEmpty(title)) {
             Toast.makeText(getContext(), "Please enter a valid title", Toast.LENGTH_LONG).show();
@@ -108,6 +131,9 @@ public class AddPostFragment extends Fragment {
         Map<String, Object> data = new HashMap<>();
         data.put("title", title);
         data.put("description", description);
+        data.put("location", location);
+        data.put("required level", requiredLevel);
+        data.put("timestamp", new Timestamp(new Date()));
 
         db.collection("posts")
                 .add(data)
@@ -119,5 +145,14 @@ public class AddPostFragment extends Fragment {
                     Log.w(TAG, "Error adding document", e);
                     Toast.makeText(getContext(), "DB error", Toast.LENGTH_LONG).show();
                 });
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+        //Toast.makeText(getContext(), level[position], Toast.LENGTH_LONG).show();
+        this.requiredLevel = level[position];
+    }
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
     }
 }

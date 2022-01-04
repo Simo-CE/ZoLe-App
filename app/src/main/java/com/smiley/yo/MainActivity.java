@@ -11,19 +11,16 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.util.HashMap;
-import java.util.Map;
 
 //Login
 public class MainActivity extends AppCompatActivity {
 
-    private static final String TAG = "EmailPassword";
+    private static final String TAG = "Login";
 
     private EditText aemail, apassword;
     private Button signin;
@@ -37,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         Intent backToLoginIntent = getIntent();
 
         //Hiding the appbar
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
 
         //Inializing firebase authentication
         mAuth = FirebaseAuth.getInstance();
@@ -45,23 +42,18 @@ public class MainActivity extends AppCompatActivity {
         signin.setOnClickListener(v -> loginUserAccount());
     }
 
-    // Menu icons are inflated just as they were with actionbar
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.app_bar, menu);
-        return true;
-    }
-
-
     @Override
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+        /*FirebaseUser currentUser = mAuth.getCurrentUser();
         updateUI(currentUser);
         if (currentUser != null) {
             reload();
+        }*/
+        if(mAuth.getCurrentUser() != null) {
+            startActivity(new Intent(this, HomeActivity.class));
+            finish();
         }
     }
 
