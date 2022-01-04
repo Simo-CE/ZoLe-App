@@ -3,11 +3,14 @@ package com.smiley.yo;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -66,7 +69,21 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         View view=inflater.inflate(R.layout.fragment_profile, container, false);
         addFragment(view);
+        Button btnUpdateUser=view.findViewById(R.id.btn_update_user);
+        btnUpdateUser.setOnClickListener(View -> updateUser());
         return view;
+    }
+
+    private void updateUser() {
+      //  FragmentTransaction fr=getParentFragmentManager().beginTransaction();
+        Fragment newFragment = new UpdateUserFragment();
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_profile, newFragment);
+        fragmentTransaction.commit();
+      //  fr.replace(R.id.fragment_profile,newFragment);
+      //  fr.addToBackStack(null);
+       // fr.commit();
     }
 
     private void addFragment(View view){

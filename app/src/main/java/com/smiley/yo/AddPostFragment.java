@@ -96,6 +96,7 @@ public class AddPostFragment extends Fragment implements AdapterView.OnItemSelec
         // Spinner which binds data to spinner
         postSpinner.setAdapter(ad);
 
+
         //Initializing cloud firestore
         db = FirebaseFirestore.getInstance();
         initializeUI(v);
