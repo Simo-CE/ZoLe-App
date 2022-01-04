@@ -91,8 +91,8 @@ public class ProfileSerFragment extends Fragment {
         // below line is use to get the data from Firebase Firestore.
         // previously we were saving data on a reference of Courses
         // now we will be getting the data from the same reference.
-        btnadd1 = v.findViewById(R.id.btnaddser);
-        btnadd1.setOnClickListener(view -> addService());
+       /* btnadd1 = v.findViewById(R.id.btnaddser);
+        btnadd1.setOnClickListener(view -> addService());*/
         db.collection("services")
                 .addSnapshotListener((value, error) -> {
                     if(error != null){
@@ -110,12 +110,7 @@ public class ProfileSerFragment extends Fragment {
         return v;
     }
 
-    private void addService() {
-        FragmentTransaction fr=getFragmentManager().beginTransaction();
-        fr.replace(R.id.fragment_profileser,new ProfileAddService());
-        fr.addToBackStack(null);
-        fr.commit();
-    }
+
 
    /*  DatabaseReference database1;
     Service service;
