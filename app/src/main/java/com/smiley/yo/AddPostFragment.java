@@ -16,6 +16,8 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.Timestamp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Date;
@@ -135,10 +137,14 @@ public class AddPostFragment extends Fragment implements AdapterView.OnItemSelec
         data.put("required level", requiredLevel);
         data.put("timestamp", new Timestamp(new Date()));
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        data.put("userId", user.getUid());
+
         db.collection("posts")
+                //.document(user.getUid())
                 .add(data)
                 .addOnSuccessListener(documentReference -> {
-                    Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
+                    //Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
                     Log.d(TAG, "Document created succesfully ");
                 })
                 .addOnFailureListener(e -> {

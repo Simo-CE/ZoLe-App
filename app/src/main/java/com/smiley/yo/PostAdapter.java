@@ -40,6 +40,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         holder.title.setText(post.title);
         //holder.title.setText(post.getTitle());
         holder.description.setText(post.description);
+        holder.fullname.setText(post.fullname);
+        holder.email.setText(post.email);
+        holder.phone.setText(post.phone);
     }
 
     @Override
@@ -48,14 +51,14 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
     }
 
     public static class PostViewHolder extends RecyclerView.ViewHolder{
-
-        TextView title, description;
-
+        TextView title, description, fullname, email, phone;
         public PostViewHolder(@NonNull View itemView) {
             super(itemView);
-
             title = itemView.findViewById(R.id.home_post_title);
             description = itemView.findViewById(R.id.home_post_description);
+            fullname = itemView.findViewById(R.id.home_post_name);
+            email = itemView.findViewById(R.id.home_post_email);
+            phone = itemView.findViewById(R.id.home_post_phone);
         }
     }
 }
