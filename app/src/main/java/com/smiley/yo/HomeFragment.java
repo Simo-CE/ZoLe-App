@@ -1,20 +1,28 @@
 package com.smiley.yo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.zip.Inflater;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -62,18 +70,47 @@ public class HomeFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
+        inflater.inflate(R.menu.app_bar,menu);
+        super.onCreateOptionsMenu(menu,inflater);
+
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        int id=item.getItemId();
+        if(id==R.id.searchMenu){
+            Toast.makeText(getContext(), "Search", Toast.LENGTH_SHORT).show();
+        }
+        if(id==R.id.notificationMenu){
+            Toast.makeText(getContext(), "Notification", Toast.LENGTH_SHORT).show();
+        }
+        if(id==R.id.logoutMenu){
+
+            FirebaseAuth.getInstance().signOut();
+            Intent SignIntent = new Intent(getContext(), MainActivity.class);
+            startActivity(SignIntent);
+            Toast.makeText(getContext(), "logout", Toast.LENGTH_SHORT).show();
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    private Toolbar toolbar;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+      /*  toolbar = (Toolbar)view.findViewById(R.id.topAppBar);
+        setSupportActionBar(toolbar);*/
 
         recyclerView = view.findViewById(R.id.home_post_list);
         recyclerView.setHasFixedSize(true);

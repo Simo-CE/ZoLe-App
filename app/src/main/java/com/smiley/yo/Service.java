@@ -8,6 +8,7 @@ public class Service {
     private String desc;
     private boolean expandables;
 
+    private String userid;
     Service(){}
 
      Service(String service_title, String service_price,String desc) {
@@ -32,6 +33,9 @@ public class Service {
     public String getDesc() {
         return desc;
     }
+    public String getUserid() {
+        return userid;
+    }
     //Setter
     public void setTitle(String title) {
         this.title=title;
@@ -41,6 +45,7 @@ public class Service {
     public void setExpandables(boolean expandables){
         this.expandables=expandables;
     }
+    public void setUserid(String userid) { this.userid=userid; }
 
 
 }

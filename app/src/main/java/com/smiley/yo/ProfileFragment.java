@@ -70,6 +70,8 @@ public class ProfileFragment extends Fragment {
         View view=inflater.inflate(R.layout.fragment_profile, container, false);
         addFragment(view);
         Button btnUpdateUser=view.findViewById(R.id.btn_update_user);
+        //Hiding the appbar
+        //getSupportActionBar().hide();
         btnUpdateUser.setOnClickListener(View -> updateUser());
         return view;
     }
