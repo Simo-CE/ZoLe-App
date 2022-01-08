@@ -15,10 +15,11 @@ import java.util.List;
 public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHolder> {
     private List<Service> List2;
     private Context context;
-
-    public ProfileAdapter(List<Service> List2, Context context){
+    private final OnItemClickListener listener;
+    public ProfileAdapter(List<Service> List2, Context context,OnItemClickListener listener){
         this.List2 =List2;
         this.context=context;
+        this.listener = listener;
     }
 
     @NonNull
@@ -35,12 +36,20 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
       //  holder.price.setText(service.getPrice());
         holder.title.setText(service.getTitle());
      //   holder.desc.setText(service.getDesc());
+       holder.itemView.setOnClickListener(view -> {
+           listener.onItemClick(service);
+       });
     }
 
     @Override
     public int getItemCount() {
         return List2.size();
     }
+
+    public interface OnItemClickListener {
+        void onItemClick(Service List2);
+    }
+
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
