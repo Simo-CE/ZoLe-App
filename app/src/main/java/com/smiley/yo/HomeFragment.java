@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
@@ -195,12 +194,30 @@ public class HomeFragment extends Fragment {
                             //users.forEach(user -> Log.d("______users item", String.valueOf(user)));
                             //Log.d("______users item", String.valueOf(users.get(0)));
                         }
-                        Log.d("______users size", String.valueOf(users.size()));
-                        users.forEach(user -> Log.d("_________users", user));
-                        users.forEach(user ->
-                                db.collection("posts")
-                                        .whereEqualTo("userId", user)
-                                        .addSnapshotListener((value, e) -> {
+                    } else {
+                        Log.d(TAG, "Error getting users: ", task.getException());
+                    }
+                });
+
+        //this is not getting executed
+        Log.d("______users size", String.valueOf(users.size()));
+        users.forEach(user -> Log.d("_________users", user));
+
+        users.forEach(user ->
+                        db.collection("posts")
+                                .whereEqualTo("userId", user)
+                                .get()
+                                .addOnCompleteListener(task1 -> {
+                                    if (task1.isSuccessful()) {
+                                        for (QueryDocumentSnapshot doc : task1.getResult()) {
+                                            Log.d("_________posts", doc.getId() + " => " + doc.getData());
+                                            postArrayList.add(doc.toObject(Post.class));
+                                        }
+                                    } else {
+                                        Log.d(TAG, "Error getting documents: ", task1.getException());
+                                    }
+                                })
+                                        /*.addSnapshotListener((value, e) -> {
                                             if (e != null) {
                                                 Log.w(TAG, "_______________Listen failed.", e);
                                                 return;
@@ -212,11 +229,7 @@ public class HomeFragment extends Fragment {
                                                 }
                                             }
                                             postAdapter.notifyDataSetChanged();
-                                        })
-                        );
-                    } else {
-                        Log.d(TAG, "Error getting users: ", task.getException());
-                    }
-                });
+                                        })*/
+        );
     }
 }
