@@ -19,7 +19,6 @@ public class AddPagerAdapter extends FragmentStateAdapter {
                 return new AddServiceFragment();
             default:
                 return new AddPostFragment();
-
         }
     }
 
