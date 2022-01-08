@@ -6,7 +6,7 @@ public class Service {
     private String title;
     private String price;
     private String desc;
-
+    private boolean expandables;
 
     Service(){}
 
@@ -14,9 +14,13 @@ public class Service {
         this.title = service_title;
         this.price = service_price;
         this.desc = desc;
+        this.expandables=false;
 
     }
 
+    public boolean isExpandables(){
+        return expandables;
+    }
     // Getter
     public String getTitle() {
         return title;
@@ -34,6 +38,9 @@ public class Service {
     }
     public void setPrice(String price) { this.price=price; }
     public void setDesc(String desc) { this.desc=desc; }
+    public void setExpandables(boolean expandables){
+        this.expandables=expandables;
+    }
 
 
 }

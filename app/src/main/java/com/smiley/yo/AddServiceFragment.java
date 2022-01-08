@@ -4,9 +4,19 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -54,11 +64,61 @@ public class AddServiceFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
+    private FirebaseFirestore db;
+    private static final String TAG = "ProfileFragment LOG";
+    private EditText NameService,PriceService,DescService;
+    private Button btnaddService;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_service, container, false);
+        View v = inflater.inflate(R.layout.fragment_add_service, container, false);
+        //Initializing cloud firestore
+        db = FirebaseFirestore.getInstance();
+        initializeUI(v);
+        btnaddService.setOnClickListener(view -> addService());
+        return v;
+    }
+    private void initializeUI(View v) {
+        NameService= v.findViewById(R.id.nameServ);
+        PriceService= v.findViewById(R.id.PriceServ);
+        DescService= v.findViewById(R.id.DescServ);
+        btnaddService = v.findViewById(R.id.btnadd);
+    }
+
+    //Add service with an auto-generate an ID
+    public void addService() {
+        String stitle, sdescription,sprice;
+        stitle = NameService.getText().toString();
+        sdescription = DescService.getText().toString();
+        sprice = PriceService.getText().toString();
+
+        if (TextUtils.isEmpty(stitle)) {
+            Toast.makeText(getContext(), "Please enter a valid title", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if (TextUtils.isEmpty(sdescription)) {
+            Toast.makeText(getContext(), "Provide service descritption", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if (TextUtils.isEmpty(sprice)) {
+            Toast.makeText(getContext(), "Provide service price", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        //Setting the service document
+        Map<String, Object> data = new HashMap<>();
+        data.put("title", stitle);
+        data.put("price", sprice);
+        data.put("desc", sdescription);
+
+        db.collection("services")
+                .add(data)
+                .addOnSuccessListener(documentReference -> {
+                    Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
+                    Log.d(TAG, "Document created succesfully ");
+                })
+                .addOnFailureListener(e -> Log.w(TAG, "Error adding document", e));
     }
 }

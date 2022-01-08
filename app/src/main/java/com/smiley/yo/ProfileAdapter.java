@@ -32,9 +32,9 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Service service = List2.get(position);
-        holder.price.setText(service.getPrice());
+      //  holder.price.setText(service.getPrice());
         holder.title.setText(service.getTitle());
-        holder.desc.setText(service.getDesc());
+     //   holder.desc.setText(service.getDesc());
     }
 
     @Override
@@ -45,14 +45,14 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView  title;
-        TextView  price;
-        TextView  desc;
+        //TextView  price;
+        //TextView  desc;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             title=itemView.findViewById(R.id.title);
-            price=itemView.findViewById(R.id.price);
-            desc=itemView.findViewById(R.id.desc);
+         //   price=itemView.findViewById(R.id.price);
+          //  desc=itemView.findViewById(R.id.desc);
         }
     }
 }

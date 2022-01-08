@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="30dp">
+    >
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView1"
@@ -24,16 +24,6 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-    <Button
-        android:id="@+id/btnaddser"
-        android:layout_width="65dp"
-        android:layout_height="71dp"
-        android:layout_gravity="center_vertical"
-        android:backgroundTint="@color/orange"
-        android:text="Add"
-        android:textColor="@color/dark_blue"
-        app:cornerRadius="50dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/login_title" />
+
 
 </FrameLayout>
