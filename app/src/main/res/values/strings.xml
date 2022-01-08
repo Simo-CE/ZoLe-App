@@ -42,81 +42,9 @@
     <string name="user_location">Taroudant, Morocco</string>
     <string name="user_phone">06X-XXXXXXXXX</string>
     <string name="user_email">JohnDoe@gmail.com</string>
-    <!--Services array items-->
-    <string-array name="service_title">
-        <item>S1</item>
-        <item>S2</item>
-        <item>S3</item>
-        <item>S4</item>
-        <item>S5</item>
-        <item>S6</item>
-        <item>S7</item>
-        <item>S8</item>
-        <item>S9</item>
-        <item>S10</item>
-        <item>S11</item>
-        <item>S12</item>
-        <item>S13</item>
-        <item>S14</item>
-        <item>S15</item>
-        <item>S16</item>
-        <item>S17</item>
-        <item>S18</item>
-        <item>S19</item>
-        <item>S20</item>
-    </string-array>
-    <integer-array name="service_price">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>9</item>
-        <item>10</item>
-        <item>11</item>
-        <item>12</item>
-        <item>13</item>
-        <item>14</item>
-        <item>15</item>
-        <item>16</item>
-        <item>17</item>
-        <item>18</item>
-        <item>19</item>
-        <item>20</item>
-    </integer-array>
-
-    <string-array name="post_title">
-        <item>P1</item>
-        <item>P2</item>
-        <item>P3</item>
-        <item>P4</item>
-        <item>P5</item>
-        <item>P6</item>
-        <item>P7</item>
-        <item>P8</item>
-        <item>P9</item>
-        <item>P10</item>
-        <item>P11</item>
-        <item>P12</item>
-        <item>P13</item>
-        <item>P14</item>
-        <item>P15</item>
-        <item>P16</item>
-        <item>P17</item>
-        <item>P18</item>
-        <item>P19</item>
-        <item>P20</item>
-    </string-array>
-
-    =======
     <string name="post">Post</string>
     <string name="service">Service</string>
     <string name="location">Location</string>
     <string name="logout">Log out</string>
-
-
-
+    <string name="user">User</string>
 </resources>
