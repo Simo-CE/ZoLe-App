@@ -33,7 +33,6 @@
     <string name="phone">Phone</string>
 
 
-
     <!--Home UI string-->
 
     <!--Profile UI string-->
@@ -112,14 +111,12 @@
         <item>P20</item>
     </string-array>
 
-=======
+    =======
     <string name="post">Post</string>
     <string name="service">Service</string>
     <string name="location">Location</string>
     <string name="logout">Log out</string>
-<<<<<<< HEAD
-    <string name="user">User</string>
-=======
->>>>>>> 48520c42ac8d869f8b668dfe409875af85cdb9ba
->>>>>>> db91ac07f1efb9e8e922ba163975e02bd9ffdcf2
+
+
+
 </resources>
