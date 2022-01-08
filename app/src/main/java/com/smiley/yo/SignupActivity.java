@@ -87,10 +87,10 @@ public class SignupActivity extends AppCompatActivity {
                         //Extract user
                         FirebaseUser user = mAuth.getCurrentUser();
                         //Store in Users collection
-                        DocumentReference df = db.collection("Users").document(user.getUid());
+                        DocumentReference df = db.collection("users").document(user.getUid());
                         Map<String, Object> userInfo = new HashMap<>();
-                        userInfo.put("FullName", name);
-                        userInfo.put("Email", email);
+                        userInfo.put("fullname", name);
+                        userInfo.put("email", email);
                         userInfo.put("isUser", "1");
                         //Add to firestore
                         df.set(userInfo).addOnSuccessListener(documentReference -> {
