@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         Intent backToLoginIntent = getIntent();
 
         //Hiding the appbar
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
 
         //Inializing firebase authentication
         mAuth = FirebaseAuth.getInstance();
