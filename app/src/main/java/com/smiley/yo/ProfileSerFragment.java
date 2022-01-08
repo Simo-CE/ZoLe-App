@@ -6,10 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -85,7 +87,16 @@ public class ProfileSerFragment extends Fragment {
         recyclerView1.setHasFixedSize(true);
         recyclerView1.setLayoutManager(new LinearLayoutManager(getContext()));
         // adding our array list to our recycler view adapter class.
-        RVAdapter = new ProfileAdapter(List, getContext());
+        RVAdapter = new ProfileAdapter(List, getContext(), new ProfileAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Service List2) {
+                Fragment ServiceItemFragment = new ServiceItemFragment();
+                FragmentManager fragmentManager = getParentFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_profileser, ServiceItemFragment);
+                fragmentTransaction.commit();
+            }
+        });
         // setting adapter to our recycler view.
         recyclerView1.setAdapter(RVAdapter);
         // below line is use to get the data from Firebase Firestore.

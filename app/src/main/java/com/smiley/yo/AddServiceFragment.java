@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -84,7 +86,7 @@ public class AddServiceFragment extends Fragment {
         NameService= v.findViewById(R.id.nameServ);
         PriceService= v.findViewById(R.id.PriceServ);
         DescService= v.findViewById(R.id.DescServ);
-        btnaddService = v.findViewById(R.id.btnadd);
+        btnaddService = v.findViewById(R.id.addServiceBtn);
     }
 
     //Add service with an auto-generate an ID
@@ -106,7 +108,9 @@ public class AddServiceFragment extends Fragment {
             Toast.makeText(getContext(), "Provide service price", Toast.LENGTH_LONG).show();
             return;
         }
-
+        FirebaseAuth mAuth;
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
         //Setting the service document
         Map<String, Object> data = new HashMap<>();
         data.put("title", stitle);
