@@ -5,7 +5,10 @@
         android:id="@+id/searchMenu"
         android:icon="@drawable/icon_search"
         android:title="@string/search"
+        app:actionViewClass="android.widget.SearchView"
         app:showAsAction="always" />
+    <!--showAsAction="ifRoom|collapseActionView"-->
+
     <item
         android:id="@+id/notificationMenu"
         android:icon="@drawable/icon_notification"
@@ -15,7 +18,7 @@
         android:id="@+id/toolsMenu"
         android:icon="@drawable/icon_more"
         android:title="@string/menu"
-        app:showAsAction="always">
+        app:showAsAction="ifRoom|collapseActionView">
         <item
             android:id="@+id/logoutMenu"
             android:title="@string/logout"
