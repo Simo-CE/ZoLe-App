@@ -40,8 +40,8 @@ public class SignupActivity extends AppCompatActivity {
         //get main_activity: login intent
         Intent signUpIntent = getIntent();
 
-        //Hiding the appbar
-        getSupportActionBar().hide();
+        //Hiding the default appbar
+        //getSupportActionBar().hide();
 
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();

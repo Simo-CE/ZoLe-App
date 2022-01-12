@@ -123,7 +123,4 @@ public class MainActivity extends AppCompatActivity {
         startActivity(signUpIntent);
     }
 
-    //sing out user
-    //FirebaseAuth.getInstance().signOut();
-
 }
