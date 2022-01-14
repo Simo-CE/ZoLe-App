@@ -21,7 +21,7 @@
       android:layout_above="@+id/bottom_navigatin_view"
       android:layout_below="@id/include"
       app:defaultNavHost="true"
-      app:navGraph="@navigation/nav_graph" />
+      app:navGraph="@navigation/nav_graph"/>
 
   <com.google.android.material.bottomnavigation.BottomNavigationView
       android:id="@+id/bottom_navigatin_view"
@@ -33,7 +33,6 @@
       android:background="@color/dark_blue"
       app:itemIconTint="@color/primary_color"
       app:itemTextColor="@color/primary_color"
-      app:labelVisibilityMode="unlabeled"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"

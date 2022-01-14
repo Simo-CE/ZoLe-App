@@ -11,4 +11,11 @@
             orange: #FF4C29
             glassy white: #F6FEFF
             -->
+
+    <style name="ThemeOverlay.App.TextInputLayout" parent="">
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorOnSurface">@color/light_blue</item>
+        <item name="colorError">@color/orange</item>
+    </style>
+
 </resources>

@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -69,7 +70,7 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         View view=inflater.inflate(R.layout.fragment_profile, container, false);
         addFragment(view);
-        Button btnUpdateUser=view.findViewById(R.id.btn_update_user);
+        ImageButton btnUpdateUser=view.findViewById(R.id.btn_update_user);
         //Hiding the appbar
         //getSupportActionBar().hide();
         btnUpdateUser.setOnClickListener(View -> updateUser());
