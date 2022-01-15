@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -41,6 +42,7 @@ import java.util.Map;
 public class UpdateUserFragment extends Fragment {
 
     EditText Edituser_phone,Edituser_desc,Edituser_location,Edituser_email,Edituser_name;
+    ImageView Edituser_img;
     Button btnUpdateUser;
     FirebaseFirestore db;
 
@@ -98,11 +100,12 @@ public class UpdateUserFragment extends Fragment {
         FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
 
         //display data
-        if(user != null){
+        /*
             Log.d(TAG,"ON CREATE: "+ user.getEmail());
             if(user.getEmail() != null){
                 Edituser_email.setText(user.getEmail());
-            }
+            }*/
+        if(user != null){
             DocumentReference documentReference=db.collection("Users").document(user.getUid());
             documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
                 @Override
@@ -117,45 +120,49 @@ public class UpdateUserFragment extends Fragment {
         }
 
         btnUpdateUser.setOnClickListener(v1 -> updateProfile());
+        Edituser_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Image Clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         return v;
     }
 
     private void InitDataUser(View view) {
         btnUpdateUser=view.findViewById(R.id.btn_update_save);
-        Edituser_email=view.findViewById(R.id.user_email_profile);
         Edituser_location=view.findViewById(R.id.user_location_profile);
         Edituser_desc=view.findViewById(R.id.user_desc_profile);
         Edituser_name=view.findViewById(R.id.user_name_profile);
         Edituser_phone=view.findViewById(R.id.user_phone_profile);
+        Edituser_img=view.findViewById(R.id.user_image_profile);
     }
 
     private void updateProfile() {
 
         String UserName,UserPhone,UserLocation,UserDesc ;
         UserName = Edituser_name.getText().toString();
-        String UserEmail = Edituser_email.getText().toString();
         UserPhone = Edituser_phone.getText().toString();
         UserLocation = Edituser_location.getText().toString();
         UserDesc = Edituser_desc.getText().toString();
         //Update
         db=FirebaseFirestore.getInstance();
         FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
-        assert user != null;
-        user.updateEmail(UserEmail)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
+        /*assert user != null;
+       user.updateEmail(UserEmail)
+            .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
+                        if (task.isSuccessful()) {*/
                             DocumentReference dc=db.collection("Users").document(user.getUid());
                             Map<String, Object> dataUser = new HashMap<>();
                             dataUser.put("FullName", UserName);
                             dataUser.put("Phone", UserPhone);
                             dataUser.put("Location", UserLocation);
                             dataUser.put("Description", UserDesc);
-                            dataUser.put("Email", UserEmail);
-                            dc.update(dataUser)
-                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            dc.update(dataUser);
+                          /*          .addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(@NonNull Void unused) {
                                     Toast.makeText(getContext(), "Edit Success", Toast.LENGTH_SHORT).show();
@@ -165,7 +172,7 @@ public class UpdateUserFragment extends Fragment {
 
                         }
                     }
-                });
+                });*/
 
 
         //Update password --> reset password

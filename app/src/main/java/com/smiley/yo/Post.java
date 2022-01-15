@@ -9,7 +9,7 @@ Using a RecyclerView has the following key steps:
 */
 public class Post {
     String title, description, fullname, email, phone;
-    //private boolean status;
+    //private String status;
 
     public Post() {
     }

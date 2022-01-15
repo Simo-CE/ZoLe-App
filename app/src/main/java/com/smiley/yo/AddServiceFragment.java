@@ -116,6 +116,7 @@ public class AddServiceFragment extends Fragment {
         data.put("title", stitle);
         data.put("price", sprice);
         data.put("desc", sdescription);
+        data.put("userid",user);
 
         db.collection("services")
                 .add(data)

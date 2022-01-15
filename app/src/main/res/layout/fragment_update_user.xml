@@ -62,34 +62,7 @@
             android:text="Name" />
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:gravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
 
-        <EditText
-            android:layout_width="355dp"
-            android:layout_height="48dp"
-            android:id="@+id/user_email_profile"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/border_edittext"
-            android:paddingLeft="5dp"
-            android:text="input" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="7dp"
-            android:background="#ffffff"
-            android:text="Email" />
-
-
-    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/relativeLayout3"
@@ -99,7 +72,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout2">
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
 
         <EditText
             android:layout_width="355dp"

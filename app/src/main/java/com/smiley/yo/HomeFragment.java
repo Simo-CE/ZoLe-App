@@ -1,15 +1,22 @@
 package com.smiley.yo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.firestore.DocumentChange;
 
@@ -80,6 +87,7 @@ public class HomeFragment extends Fragment {
 
         PostsListener();
 
+
         //dbRef = FirebaseFirestore.getInstance().getRefer
 
         return view;
@@ -111,4 +119,66 @@ public class HomeFragment extends Fragment {
         //CollectionReference usersRef = db.collection("Users");
         //DocumentReference usersRef = db.collection("Users").document();
     }
+   /* @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        //super.onCreateOptionsMenu(menu);
+        // Inflate the menu; this adds items to the action bar if it is present.
+        inflater.inflate(R.menu.app_bar, menu);
+        MenuItem item=menu.findItem(R.id.searchMenu);
+        SearchView searchView = (SearchView) item.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                processSearch(s);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                processSearch(s);
+                return false;
+            }
+        });
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.notificationMenu:
+
+                Toast.makeText(getContext(), "khdama", Toast.LENGTH_SHORT).show();
+                return true;
+
+            case R.id.searchMenu:
+
+                return true;
+
+            case R.id.logoutMenu:
+                //sing out user
+                FirebaseAuth.getInstance().signOut();
+             //   startActivity(new Intent(this, MainActivity.class));
+             //   finish();
+                return true;
+
+            default:
+                // action was not recognized, Invoking the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+
+        }
+    }
+    public void processSearch(String s){
+        ArrayList<Post> listPost=new ArrayList<>();
+
+        for(Post p:postArrayList){
+            if(p.getDescription().toLowerCase().contains(s.toLowerCase())){
+                listPost.add(p);
+            }
+        }
+
+
+        PostAdapter adapterpost=new PostAdapter(getContext(),listPost);
+        recyclerView.setAdapter(adapterpost);
+    }*/
 }

@@ -16,6 +16,8 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -104,7 +106,9 @@ public class ProfileSerFragment extends Fragment {
         // now we will be getting the data from the same reference.
        /* btnadd1 = v.findViewById(R.id.btnaddser);
         btnadd1.setOnClickListener(view -> addService());*/
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         db.collection("services")
+                .whereEqualTo("userid",user.getUid())
                 .addSnapshotListener((value, error) -> {
                     if(error != null){
                         Log.e("Firestore error",error.getMessage());

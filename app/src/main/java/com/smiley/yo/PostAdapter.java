@@ -61,4 +61,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             phone = itemView.findViewById(R.id.home_post_phone);
         }
     }
+
+
 }
