@@ -162,7 +162,8 @@
                 <androidx.viewpager.widget.ViewPager
                     android:id="@+id/viewpager"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"/>
 
             </LinearLayout>
 
@@ -176,19 +177,16 @@
             android:paddingStart="10dp"
             android:background="@color/white"
             android:orientation="vertical">
-
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:tabIndicatorColor="@color/orange" />
                 &lt;!&ndash;android:backgroundTint="#FAEEE7"&ndash;&gt;
-
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/viewpager"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
-
         </LinearLayout>-->
 
     </LinearLayout>
@@ -197,8 +195,6 @@
     <!--<androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-
         <androidx.cardview.widget.CardView
             android:id="@+id/cardViewProfile"
             android:layout_width="match_parent"
@@ -210,12 +206,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/primary_color">
-
                 <ImageView
                     android:id="@+id/imageView"
                     android:layout_width="wrap_content"
@@ -224,7 +218,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:src="@tools:sample/avatars" />
-
                 <TextView
                     android:id="@+id/user_name_profile"
                     android:layout_width="wrap_content"
@@ -236,7 +229,6 @@
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/imageView"
                     app:layout_constraintTop_toTopOf="parent" />
-
                 <TextView
                     android:id="@+id/user_type_profile"
                     android:layout_width="wrap_content"
@@ -249,7 +241,6 @@
                     app:layout_constraintStart_toStartOf="@+id/user_name_profile"
                     app:layout_constraintTop_toBottomOf="@+id/user_name_profile"
                     tools:ignore="SmallSp" />
-
                 <TextView
                     android:id="@+id/user_desc_profile"
                     android:layout_width="237dp"
@@ -260,7 +251,6 @@
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="@+id/user_type_profile"
                     app:layout_constraintTop_toBottomOf="@+id/user_type_profile" />
-
                 <TextView
                     android:id="@+id/user_location_profile"
                     android:layout_width="wrap_content"
@@ -274,7 +264,6 @@
                     app:layout_constraintStart_toStartOf="@+id/user_desc_profile"
                     app:layout_constraintTop_toBottomOf="@+id/user_desc_profile"
                     tools:ignore="SmallSp" />
-
                 <ImageButton
                     android:id="@+id/btn_update_user"
                     android:layout_width="wrap_content"
@@ -285,7 +274,6 @@
                     android:backgroundTint="@color/dark_blue"
                     app:layout_constraintBottom_toTopOf="@+id/relative_profile"
                     app:layout_constraintEnd_toEndOf="parent" />
-
                 <RelativeLayout
                     android:id="@+id/relative_profile"
                     android:layout_width="match_parent"
@@ -294,7 +282,6 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent">
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -304,7 +291,6 @@
                         android:textColor="@color/white"
                         android:textSize="10sp"
                         tools:ignore="SmallSp" />
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -315,10 +301,7 @@
                         android:textColor="@color/white"
                         android:textSize="10sp"
                         tools:ignore="SmallSp" />
-
                 </RelativeLayout>
-
-
             </androidx.constraintlayout.widget.ConstraintLayout>
             &lt;!&ndash;original relative layout&ndash;&gt;
             &lt;!&ndash;<RelativeLayout
@@ -327,8 +310,6 @@
                 android:background="@color/primary_color"
                 android:elevation="10dp"
                 android:paddingStart="5dp">
-
-
                 <ImageView
                     android:id="@+id/imageView"
                     android:layout_width="wrap_content"
@@ -336,7 +317,6 @@
                     android:layout_alignParentStart="true"
                     android:layout_marginEnd="10dp"
                     tools:src="@tools:sample/avatars" />
-
                 <TextView
                     android:id="@+id/user_name_profile"
                     android:layout_width="wrap_content"
@@ -349,7 +329,6 @@
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />
-
                 <TextView
                     android:id="@+id/user_type_profile"
                     android:layout_width="wrap_content"
@@ -360,7 +339,6 @@
                     android:textSize="10sp"
                     android:textStyle="bold"
                     tools:ignore="SmallSp" />
-
                 <TextView
                     android:id="@+id/user_desc_profile"
                     android:layout_width="237dp"
@@ -373,7 +351,6 @@
                     android:text="@string/user_desc"
                     android:textColor="@color/white"
                     android:textSize="10sp" />
-
                 <TextView
                     android:id="@+id/user_location_profile"
                     android:layout_width="wrap_content"
@@ -386,7 +363,6 @@
                     android:text="@string/user_location"
                     android:textColor="@color/orange"
                     android:textSize="10sp" />
-
                 <Button
                     android:id="@+id/btn_update_user"
                     style="?android:attr/borderlessButtonStyle"
@@ -397,7 +373,6 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="9dp"
                     android:background="@drawable/ic_baseline_edit_24" />
-
                 <RelativeLayout
                     android:id="@+id/relative_profile"
                     android:layout_width="match_parent"
@@ -405,7 +380,6 @@
                     android:layout_below="@id/user_location_profile"
                     android:layout_marginTop="0dp"
                     android:background="@color/light_blue">
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -414,7 +388,6 @@
                         android:text="@string/user_phone"
                         android:textColor="@color/white"
                         android:textSize="10sp" />
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -424,13 +397,9 @@
                         android:text="@string/user_email"
                         android:textColor="@color/white"
                         android:textSize="10sp" />
-
                 </RelativeLayout>
-
-
             </RelativeLayout>&ndash;&gt;
         </androidx.cardview.widget.CardView>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
@@ -441,7 +410,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardViewProfile">
             &lt;!&ndash;app:layout_constraintTop_toBottomOf="@+id/cardViewProfile"&ndash;&gt;
-
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabLayout"
                 android:layout_width="match_parent"
@@ -449,7 +417,6 @@
                 android:background="@color/light_blue"
                 app:tabIndicatorColor="@color/orange"
                 app:tabTextColor="@color/primary_color" />
-
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/viewpager"
                 android:layout_width="match_parent"
@@ -460,9 +427,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
-
         </LinearLayout>
-
     </androidx.constraintlayout.widget.ConstraintLayout>-->
 </FrameLayout>
 
@@ -476,13 +441,9 @@
         android:layout_margin="10dp"
         android:id="@+id/fragment_profile"
         >
-
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-
         <androidx.cardview.widget.CardView
             android:id="@+id/cardViewProfile"
             android:layout_width="match_parent"
@@ -492,15 +453,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/extra_light_blue"
                 android:paddingStart="5dp"
                 >
-
-
                 <ImageView
                     android:id="@+id/imageView"
                     android:layout_width="72dp"
@@ -512,13 +470,11 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:src="@tools:sample/avatars" />
-
                 <TextView
                     android:id="@+id/user_name_profile"
                     android:layout_width="238dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-
                     android:layout_alignParentTop="true"
                     android:layout_marginStart="142dp"
                     android:layout_marginTop="8dp"
@@ -527,7 +483,6 @@
                     android:textColor="@color/white"
                     android:textSize="14sp"
                     android:textStyle="bold" />
-
                 <TextView
                     android:id="@+id/user_type_profile"
                     android:layout_width="240dp"
@@ -541,7 +496,6 @@
                     android:textColor="@color/orange"
                     android:textSize="10sp"
                     android:textStyle="bold" />
-
                 <TextView
                     android:id="@+id/user_desc_profile"
                     android:layout_width="237dp"
@@ -554,7 +508,6 @@
                     android:text="@string/user_desc"
                     android:textColor="@color/white"
                     android:textSize="10sp" />
-
                 <TextView
                     android:id="@+id/user_location_profile"
                     android:layout_width="wrap_content"
@@ -567,7 +520,6 @@
                     android:text="@string/user_location"
                     android:textColor="@color/orange"
                     android:textSize="10sp" />
-
                 <Button
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="19dp"
@@ -578,7 +530,6 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="9dp"
                     android:background="@drawable/ic_baseline_edit_24" />
-
                 <RelativeLayout
                     android:id="@+id/relative_profile"
                     android:layout_width="match_parent"
@@ -586,7 +537,6 @@
                     android:layout_below="@id/user_location_profile"
                     android:layout_marginTop="0dp"
                     android:background="@color/light_blue">
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -595,7 +545,6 @@
                         android:text="@string/user_phone"
                         android:textColor="@color/white"
                         android:textSize="10sp" />
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -605,15 +554,9 @@
                         android:text="@string/user_email"
                         android:textColor="@color/white"
                         android:textSize="10sp" />
-
                 </RelativeLayout>
-
-
             </RelativeLayout>
-
-
         </androidx.cardview.widget.CardView>
-
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
             android:layout_width="378dp"
@@ -626,9 +569,7 @@
             app:layout_constraintTop_toBottomOf="@+id/cardViewProfile"
             app:tabIndicatorColor="@color/orange"
             app:tabTextColor="@color/primary_color">
-
         </com.google.android.material.tabs.TabLayout>
-
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewpager"
             android:layout_width="377dp"
@@ -639,7 +580,6 @@
             app:layout_constraintHorizontal_bias="0.516"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tabLayout">
-
         </androidx.viewpager.widget.ViewPager>
     </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>-->

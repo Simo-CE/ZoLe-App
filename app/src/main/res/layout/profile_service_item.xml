@@ -1,16 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="10dp"
-    android:layout_marginTop="32dp"
-    android:layout_marginEnd="10dp"
->
+    android:layout_height="wrap_content">
+
+    <!--<androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/extra_light_blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="30dp"
+            android:text="@string/title"
+            android:textColor="@color/primary_color"
+            app:layout_constraintHorizontal_bias="0.26"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        &lt;!&ndash;     <TextView
+                android:id="@+id/desc"
+                android:layout_width="91dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="36dp"
+                android:text="desc"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.266"
+                app:layout_constraintStart_toStartOf="parent"
+                />
+
+          <TextView
+                android:id="@+id/price"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginHorizontal="20dp"
+                android:text="Price"
+                android:textColor="@color/white"
+                android:textSize="18sp" /> &ndash;&gt;
+    </androidx.cardview.widget.CardView>-->
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:cardBackgroundColor="@color/white_gray"
+        android:layout_margin="1dp">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="30dp"
+            android:text="@string/title"
+            android:textColor="@color/dark_blue"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.cardview.widget.CardView>
 
 
-    <com.google.android.material.card.MaterialCardView
+    <!--<com.google.android.material.card.MaterialCardView
         android:layout_width="344dp"
         android:layout_height="52dp"
         app:cardBackgroundColor="@color/light_blue"
@@ -35,7 +95,7 @@
             app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="125dp" />
 
-        <!--     <TextView
+        &lt;!&ndash;     <TextView
                 android:id="@+id/desc"
                 android:layout_width="91dp"
                 android:layout_height="wrap_content"
@@ -57,7 +117,7 @@
                 android:layout_marginHorizontal="20dp"
                 android:text="Price"
                 android:textColor="@color/white"
-                android:textSize="18sp" /> -->
-    </com.google.android.material.card.MaterialCardView>
+                android:textSize="18sp" /> &ndash;&gt;
+    </com.google.android.material.card.MaterialCardView>-->
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
