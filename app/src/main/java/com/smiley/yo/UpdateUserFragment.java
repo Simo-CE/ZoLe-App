@@ -1,13 +1,23 @@
 package com.smiley.yo;
 
+import static android.app.appsearch.AppSearchResult.RESULT_OK;
 import static android.content.ContentValues.TAG;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +25,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
+
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -30,9 +42,21 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.StorageTask;
+import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -41,10 +65,16 @@ import java.util.Map;
  */
 public class UpdateUserFragment extends Fragment {
 
-    EditText Edituser_phone,Edituser_desc,Edituser_location,Edituser_email,Edituser_name;
-    ImageView Edituser_img;
+    EditText Edituser_phone,Edituser_desc,Edituser_location,Edituser_name;
+    CircleImageView Edituser_img;
     Button btnUpdateUser;
     FirebaseFirestore db;
+    private FirebaseAuth mAuth;
+    private Uri filePath;
+    FirebaseStorage storage;
+    StorageReference storageReference;
+    FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
+
 
     //
 
@@ -96,15 +126,11 @@ public class UpdateUserFragment extends Fragment {
         View v= inflater.inflate(R.layout.fragment_update_user, container, false);
         db=FirebaseFirestore.getInstance();
         InitDataUser(v);
+        // get the Firebase  storage reference
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
 
-        FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
-
-        //display data
-        /*
-            Log.d(TAG,"ON CREATE: "+ user.getEmail());
-            if(user.getEmail() != null){
-                Edituser_email.setText(user.getEmail());
-            }*/
+        
         if(user != null){
             DocumentReference documentReference=db.collection("Users").document(user.getUid());
             documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
@@ -116,20 +142,46 @@ public class UpdateUserFragment extends Fragment {
                     Edituser_desc.setText(value.getString("Description"));
 
                 }
+
             });
+
+            StorageReference imageref=storageReference.child("image/"+user.getUid()+".jpeg");
+            imageref.getDownloadUrl().addOnSuccessListener((OnSuccessListener<? super Uri>) (uri)->{
+               Picasso.get().load(uri).into(Edituser_img);
+            });
+
+
         }
 
-        btnUpdateUser.setOnClickListener(v1 -> updateProfile());
+
+
+
+
         Edituser_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "Image Clicked", Toast.LENGTH_SHORT).show();
+                mGetContent.launch("image/*");
             }
         });
 
+
+        btnUpdateUser.setOnClickListener(v1 -> updateProfile());
         return v;
     }
 
+    // GetContent creates an ActivityResultLauncher<String> to allow you to pass
+// in the mime type you'd like to allow the user to select
+    ActivityResultLauncher<String> mGetContent = registerForActivityResult(new ActivityResultContracts.GetContent(),
+            new ActivityResultCallback<Uri>() {
+                @Override
+                public void onActivityResult(Uri uri) {
+                    // Handle the returned Uri
+                    if(uri != null){
+                        Edituser_img.setImageURI(uri);
+                        filePath=uri;
+                    }
+                }
+            });
     private void InitDataUser(View view) {
         btnUpdateUser=view.findViewById(R.id.btn_update_save);
         Edituser_location=view.findViewById(R.id.user_location_profile);
@@ -137,6 +189,7 @@ public class UpdateUserFragment extends Fragment {
         Edituser_name=view.findViewById(R.id.user_name_profile);
         Edituser_phone=view.findViewById(R.id.user_phone_profile);
         Edituser_img=view.findViewById(R.id.user_image_profile);
+
     }
 
     private void updateProfile() {
@@ -162,29 +215,29 @@ public class UpdateUserFragment extends Fragment {
                             dataUser.put("Location", UserLocation);
                             dataUser.put("Description", UserDesc);
                             dc.update(dataUser);
-                          /*          .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(@NonNull Void unused) {
-                                    Toast.makeText(getContext(), "Edit Success", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                            Log.d(TAG, "User email address updated.");
 
-                        }
-                    }
-                });*/
-
-
-        //Update password --> reset password
-        //Verify EMAIL Account
-
-
-
-
+        uploadProfileImage();
 
     }
 
+    private void uploadProfileImage() {
+        if(filePath != null){
+            StorageReference reference=storage.getReference().child("image/"+user.getUid()+".jpeg");
+            reference.putFile(filePath).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
 
+                    if(task.isSuccessful()){
+                        Toast.makeText(getContext(), "Success", Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        Toast.makeText(getContext(), "Failed", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
+
+    }
 
 
 }
