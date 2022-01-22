@@ -21,14 +21,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/user_image_profile"
-            android:layout_width="95dp"
-            android:layout_height="84dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="56dp"
-            android:background="@color/white"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_launcher_foreground"
+            app:civ_border_color="@color/background_color"
+            app:civ_border_width="2dp"
             android:clickable="true" />
+
 
     </RelativeLayout>
 
@@ -62,34 +65,7 @@
             android:text="Name" />
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:gravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
 
-        <EditText
-            android:layout_width="355dp"
-            android:layout_height="48dp"
-            android:id="@+id/user_email_profile"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/border_edittext"
-            android:paddingLeft="5dp"
-            android:text="input" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="7dp"
-            android:background="#ffffff"
-            android:text="Email" />
-
-
-    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/relativeLayout3"
@@ -99,7 +75,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout2">
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
 
         <EditText
             android:layout_width="355dp"

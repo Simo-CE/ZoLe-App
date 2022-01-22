@@ -83,4 +83,17 @@ dependencies {
     //CardView widget dependencies
     implementation "androidx.cardview:cardview:1.0.0"
 
+    // Declare the dependency for the Cloud Storage library
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation 'com.google.firebase:firebase-storage'
+
+    //Cercle image
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+
+
+    //Picasso library
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+
 }
