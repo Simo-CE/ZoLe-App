@@ -66,7 +66,6 @@ public class HomeActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.notificationMenu:
-
                 return true;
 
             case R.id.searchMenu:
