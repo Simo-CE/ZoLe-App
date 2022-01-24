@@ -9,6 +9,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.SearchView;
 import android.widget.Toast;
 
@@ -75,10 +77,33 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
+        SearchView searchView = view.findViewById(R.id.search_post);
         recyclerView = view.findViewById(R.id.home_post_list);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                processSearch(s);
+                return false;
+            }
 
+            @Override
+            public boolean onQueryTextChange(String s) {
+                processSearch(s);
+                return false;
+            }
+        });
+       /* mSearchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String searchText = mSearchField.getText().toString();
+
+                firebaseUserSearch(searchText);
+
+            }
+        });*/
         db = FirebaseFirestore.getInstance();
         postArrayList = new ArrayList<Post>();
         postAdapter = new PostAdapter(getContext(), postArrayList);
@@ -167,12 +192,12 @@ public class HomeFragment extends Fragment {
                 return super.onOptionsItemSelected(item);
 
         }
-    }
+    }*/
     public void processSearch(String s){
         ArrayList<Post> listPost=new ArrayList<>();
 
         for(Post p:postArrayList){
-            if(p.getDescription().toLowerCase().contains(s.toLowerCase())){
+            if(p.getTitle().toLowerCase().contains(s.toLowerCase())){
                 listPost.add(p);
             }
         }
@@ -180,5 +205,5 @@ public class HomeFragment extends Fragment {
 
         PostAdapter adapterpost=new PostAdapter(getContext(),listPost);
         recyclerView.setAdapter(adapterpost);
-    }*/
+    }
 }
