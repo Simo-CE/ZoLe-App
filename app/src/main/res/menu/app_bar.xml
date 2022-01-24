@@ -18,7 +18,8 @@
         android:id="@+id/toolsMenu"
         android:icon="@drawable/icon_more"
         android:title="@string/menu"
-        app:showAsAction="ifRoom|collapseActionView">
+        app:showAsAction="ifRoom">
+        <!--app:showAsAction="ifRoom|collapseActionView"-->
         <item
             android:id="@+id/logoutMenu"
             android:title="@string/logout"
