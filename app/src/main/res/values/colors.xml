@@ -11,8 +11,9 @@
     <color name="background_color">#E6F2F3</color>
     <color name="dark_blue">#082032</color>
     <color name="light_blue">#2C394B</color>
-    <color name="extra_light_blue">#223756</color>
+    <color name="extra_light_blue">#334756</color>
     <color name="orange">#FF4C29</color>
+    <color name="white_gray">#F4F4F4</color>
     <!--Colors:
             main dark blue: #082032
             light blue sec: #2C394B

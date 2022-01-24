@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder> {
@@ -26,9 +25,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
     @NonNull
     @Override
     public PostAdapter.PostViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
         View view = LayoutInflater.from(context).inflate(R.layout.home_post_item, parent, false);
-
         return new PostViewHolder(view);
     }
 
@@ -38,11 +35,10 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         Post post = postArrayList.get(position);
 
         holder.title.setText(post.title);
-        //holder.title.setText(post.getTitle());
         holder.description.setText(post.description);
         holder.fullname.setText(post.fullname);
         holder.email.setText(post.email);
-        holder.phone.setText(post.phone);
+        holder.location.setText(post.location);
     }
 
     @Override
@@ -50,15 +46,16 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         return postArrayList.size();
     }
 
-    public static class PostViewHolder extends RecyclerView.ViewHolder{
-        TextView title, description, fullname, email, phone;
+    public static class PostViewHolder extends RecyclerView.ViewHolder {
+        TextView title, description, fullname, email, location;
+
         public PostViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.home_post_title);
             description = itemView.findViewById(R.id.home_post_description);
             fullname = itemView.findViewById(R.id.home_post_name);
             email = itemView.findViewById(R.id.home_post_email);
-            phone = itemView.findViewById(R.id.home_post_phone);
+            location = itemView.findViewById(R.id.home_post_location);
         }
     }
 

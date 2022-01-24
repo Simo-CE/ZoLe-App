@@ -50,7 +50,6 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
         void onItemClick(Service List2);
     }
 
-
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView  title;
@@ -60,8 +59,8 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
             super(itemView);
 
             title=itemView.findViewById(R.id.title);
-         //   price=itemView.findViewById(R.id.price);
-          //  desc=itemView.findViewById(R.id.desc);
+            // price=itemView.findViewById(R.id.price);
+            // desc=itemView.findViewById(R.id.desc);
         }
     }
 }

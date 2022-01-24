@@ -8,18 +8,19 @@ Using a RecyclerView has the following key steps:
     Bind the adapter to the data source to populate the RecyclerView
 */
 public class Post {
-    String title, description, fullname, email, phone;
+    String title, description, fullname, email, phone, location;
     //private String status;
 
     public Post() {
     }
 
-    public Post(String title, String description, String fullname, String email, String phone) {
+    public Post(String title, String description, String fullname, String email, String phone, String location) {
         this.title = title;
         this.description = description;
         this.fullname = fullname;
         this.email = email;
         this.phone = phone;
+        this.location = location;
         //this.status = status;
     }
 
