@@ -16,17 +16,19 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
     Context context;
     ArrayList<Post> postArrayList;
+    private OnPostListener mOnPostListener;
 
-    public PostAdapter(Context context, ArrayList<Post> postArrayList) {
+    public PostAdapter(Context context, ArrayList<Post> postArrayList, OnPostListener onPostListener) {
         this.context = context;
         this.postArrayList = postArrayList;
+        this.mOnPostListener = onPostListener;
     }
 
     @NonNull
     @Override
     public PostAdapter.PostViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.home_post_item, parent, false);
-        return new PostViewHolder(view);
+        return new PostViewHolder(view, mOnPostListener);
     }
 
     @Override
@@ -46,17 +48,30 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         return postArrayList.size();
     }
 
-    public static class PostViewHolder extends RecyclerView.ViewHolder {
+    public static class PostViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView title, description, fullname, email, location;
+        OnPostListener onPostListener;
 
-        public PostViewHolder(@NonNull View itemView) {
+        public PostViewHolder(@NonNull View itemView, OnPostListener onPostListener) {
             super(itemView);
+            this.onPostListener = onPostListener;
             title = itemView.findViewById(R.id.home_post_title);
             description = itemView.findViewById(R.id.home_post_description);
             fullname = itemView.findViewById(R.id.home_post_name);
             email = itemView.findViewById(R.id.home_post_email);
             location = itemView.findViewById(R.id.home_post_location);
+
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View view) {
+            onPostListener.onPostClick(getAdapterPosition());
+        }
+    }
+
+    public interface OnPostListener{
+        void onPostClick(int position);
     }
 
 

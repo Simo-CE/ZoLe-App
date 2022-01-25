@@ -102,7 +102,4 @@ public class HomeActivity extends AppCompatActivity {
     private void processSearch(String s) {
     }
 
-
-
-
 }
