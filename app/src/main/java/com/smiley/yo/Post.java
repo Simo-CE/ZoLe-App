@@ -72,14 +72,4 @@ public class Post {
         this.status = status;
     }*/
 
-    /*private static int lastPostId = 0;
-
-    public static ArrayList<Post> createPostsList(int numPosts) {
-        ArrayList<Post> posts = new ArrayList<Post>();
-        for (int i = 1; i <= numPosts; i++) {
-            posts.add(new Post("Title " + ++lastPostId, i <= numPosts / 2));
-        }
-        return posts;
-    }*/
-
 }

@@ -68,7 +68,7 @@ public class HomeActivity extends AppCompatActivity {
             case R.id.notificationMenu:
                 return true;
 
-            case R.id.searchMenu:
+            /*case R.id.searchMenu:
                 SearchView searchView = (SearchView) item.getActionView();
                 searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                     @Override
@@ -83,7 +83,7 @@ public class HomeActivity extends AppCompatActivity {
                         return false;
                     }
                 });
-                return true;
+                return true;*/
 
             case R.id.logoutMenu:
                 //sing out user
@@ -101,8 +101,5 @@ public class HomeActivity extends AppCompatActivity {
 
     private void processSearch(String s) {
     }
-
-
-
 
 }

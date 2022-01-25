@@ -1,40 +1,31 @@
 package com.smiley.yo;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.SearchView;
-import android.widget.Toast;
+import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.firestore.DocumentChange;
-
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link HomeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements PostAdapter.OnPostListener {
 
+    ImageButton sendMail;
+    TextView emailAddress, emailSubject;
+    CardView searchField;
     RecyclerView recyclerView;
     ArrayList<Post> postArrayList;
     PostAdapter postAdapter;
@@ -42,17 +33,16 @@ public class HomeFragment extends Fragment {
     private DatabaseReference dbRef;
     private static final String TAG = "Retrieving posts";
 
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
     public HomeFragment() {
         // Required empty public constructor
     }
+
     public static HomeFragment newInstance(String param1, String param2) {
         HomeFragment fragment = new HomeFragment();
         Bundle args = new Bundle();
@@ -94,7 +84,8 @@ public class HomeFragment extends Fragment {
                 return false;
             }
         });
-       /* mSearchBtn.setOnClickListener(new View.OnClickListener() {
+
+        /* mSearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -104,24 +95,51 @@ public class HomeFragment extends Fragment {
 
             }
         });*/
+
+
         db = FirebaseFirestore.getInstance();
         postArrayList = new ArrayList<Post>();
-        postAdapter = new PostAdapter(getContext(), postArrayList);
+        postAdapter = new PostAdapter(getContext(), postArrayList, this);
 
         recyclerView.setAdapter(postAdapter);
 
         PostsListener();
 
-
         //dbRef = FirebaseFirestore.getInstance().getRefer
+        initializeUI(view);
+
+        //Scrolling behaviour
+        final int[] state = new int[1];
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                state[0] = newState;
+            }
+
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (dy > 0 && (state[0] == 0 || state[0] == 2)) {
+                    searchField.animate().alpha(0.0f).setDuration(2000);
+                    searchField.setVisibility(View.GONE);
+                } else if (dy < -10) {
+                    searchField.animate().alpha(1.0f).setDuration(2000);
+                    searchField.setVisibility(View.VISIBLE);
+                }
+            }
+        });
 
         return view;
     }
 
-    //search for posts
-    /*public void processSearch(){
-        FirebaseRecyclerOptions<>
-    }*/
+    private void initializeUI(View view) {
+        sendMail = view.findViewById(R.id.home_post_send);
+        emailAddress = view.findViewById(R.id.home_post_email);
+        emailSubject = view.findViewById(R.id.home_post_title);
+
+        searchField = view.findViewById(R.id.searchField);
+    }
 
     private void PostsListener() {
         //Original
@@ -134,76 +152,47 @@ public class HomeFragment extends Fragment {
 
                     //List<String> posts = new ArrayList<>();
                     for (DocumentChange doc : value.getDocumentChanges()) {
-                        if (doc.getType() == DocumentChange.Type.ADDED){
+                        if (doc.getType() == DocumentChange.Type.ADDED) {
                             postArrayList.add(doc.getDocument().toObject(Post.class));
                         }
                     }
                     postAdapter.notifyDataSetChanged();
                 });
-
-        //CollectionReference usersRef = db.collection("Users");
-        //DocumentReference usersRef = db.collection("Users").document();
     }
-   /* @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        //super.onCreateOptionsMenu(menu);
-        // Inflate the menu; this adds items to the action bar if it is present.
-        inflater.inflate(R.menu.app_bar, menu);
-        MenuItem item=menu.findItem(R.id.searchMenu);
-        SearchView searchView = (SearchView) item.getActionView();
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String s) {
-                processSearch(s);
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String s) {
-                processSearch(s);
-                return false;
-            }
-        });
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.notificationMenu:
+    public void onPostClick(int position) {
+        Log.d(TAG, "onPostClick: Post Clicked " + position);
+    }
 
-                Toast.makeText(getContext(), "khdama", Toast.LENGTH_SHORT).show();
-                return true;
+    /*sendMail.setOnClickListener(view -> {
+            String email = emailAddress.getText().toString();
+            String subject = emailSubject.getText().toString();
 
-            case R.id.searchMenu:
+            Intent mail = new Intent(Intent.ACTION_SENDTO);
+            mail.setData(Uri.parse("mailTo: "));
+            mail.putExtra(Intent.EXTRA_EMAIL, email);
+            mail.putExtra(Intent.EXTRA_SUBJECT, subject);
 
-                return true;
-
-            case R.id.logoutMenu:
-                //sing out user
-                FirebaseAuth.getInstance().signOut();
-             //   startActivity(new Intent(this, MainActivity.class));
-             //   finish();
-                return true;
-
-            default:
-                // action was not recognized, Invoking the superclass to handle it.
-                return super.onOptionsItemSelected(item);
-
+            if (mail.resolveActivity(getActivity().getPackageManager()) != null) {
+                startActivity(mail);
+            }
+            //else Toast.makeText(HomeFragment.this, "No suitable mail app", Toast.LENGTH_SHORT).show();
+            else {
+                Toast.makeText(getContext(), "No suitable mail app", Toast.LENGTH_SHORT).show();
         }
     }*/
-    public void processSearch(String s){
-        ArrayList<Post> listPost=new ArrayList<>();
 
-        for(Post p:postArrayList){
-            if(p.getTitle().toLowerCase().contains(s.toLowerCase())){
+    public void processSearch(String s) {
+        ArrayList<Post> listPost = new ArrayList<>();
+
+        for (Post p : postArrayList) {
+            if (p.getTitle().toLowerCase().contains(s.toLowerCase())) {
                 listPost.add(p);
             }
         }
 
-
-        PostAdapter adapterpost=new PostAdapter(getContext(),listPost);
+        PostAdapter adapterpost = new PostAdapter(getContext(), listPost, this);
         recyclerView.setAdapter(adapterpost);
     }
 }
