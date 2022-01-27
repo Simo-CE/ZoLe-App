@@ -9,6 +9,7 @@ Using a RecyclerView has the following key steps:
 */
 public class Post {
     String title, description, fullname, email, phone, location;
+    String documentId;
     //private String status;
 
     public Post() {
@@ -22,6 +23,14 @@ public class Post {
         this.phone = phone;
         this.location = location;
         //this.status = status;
+    }
+
+    public String getDocumentId() {
+        return documentId;
+    }
+
+    public void setDocumentId(String documentId) {
+        this.documentId = documentId;
     }
 
     public String getTitle() {
