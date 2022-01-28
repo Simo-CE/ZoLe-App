@@ -94,5 +94,7 @@ dependencies {
     //Picasso library
     implementation 'com.squareup.picasso:picasso:2.71828'
 
+    //Dialog
+    implementation 'com.orhanobut:dialogplus:1.11@aar'
 
 }

@@ -9,6 +9,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.ArrayList;
 
 
@@ -39,8 +43,22 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         holder.title.setText(post.title);
         holder.description.setText(post.description);
         holder.fullname.setText(post.fullname);
-        holder.email.setText(post.email);
-        holder.location.setText(post.location);
+        //holder.email.setText(post.email);
+       // holder.location.setText(post.location);
+       // holder.email.setText(post.userId);
+
+        FirebaseFirestore.getInstance().collection("Users")
+                .document(post.userId)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(@NonNull DocumentSnapshot documentSnapshot) {
+                        holder.fullname.setText(documentSnapshot.getString("FullName"));
+                        holder.email.setText(documentSnapshot.getString("Email"));
+                        holder.location.setText(documentSnapshot.getString("Location"));
+                    }
+                });
+
     }
 
     @Override

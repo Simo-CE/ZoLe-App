@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group
+        android:id="@+id/toolsMenu"
+        android:icon="@drawable/icon_more"
+        android:title="@string/menu"
+        app:showAsAction="ifRoom">
+        <!--app:showAsAction="ifRoom|collapseActionView"-->
+        <item
+            android:id="@+id/edit_post"
+            android:title="Edit"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/remove_post"
+            android:title="Remove"
+            app:showAsAction="never"
+            />
+    </group>
+
+</menu>
