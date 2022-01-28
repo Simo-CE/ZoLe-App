@@ -10,7 +10,17 @@ Using a RecyclerView has the following key steps:
 public class Post {
     String title, description, fullname, email, phone, location;
     String documentId;
+    String userId;
     //private String status;
+
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
     public Post() {
     }

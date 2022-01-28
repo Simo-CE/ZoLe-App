@@ -2,6 +2,7 @@ package com.smiley.yo;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -12,8 +13,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class ProfileFragment extends Fragment {
 
@@ -54,6 +61,28 @@ public class ProfileFragment extends Fragment {
         View view=inflater.inflate(R.layout.fragment_profile, container, false);
         addFragment(view);
         ImageButton btnUpdateUser=view.findViewById(R.id.btn_update_user);
+        TextView userName=view.findViewById(R.id.user_name_profile);
+        TextView userLocation=view.findViewById(R.id.user_location_profile);
+        TextView userDescription=view.findViewById(R.id.user_desc_profile);
+        TextView userPhone=view.findViewById(R.id.user_phone_profile);
+        TextView userEmail=view.findViewById(R.id.user_email_profile);
+
+        //Extract user
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+        FirebaseFirestore.getInstance().collection("Users")
+                .document(user.getUid())
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(@NonNull DocumentSnapshot documentSnapshot) {
+                        userName.setText(documentSnapshot.getString("FullName"));
+                        userLocation.setText(documentSnapshot.getString("Location"));
+                        userDescription.setText(documentSnapshot.getString("Description"));
+                        userPhone.setText(documentSnapshot.getString("Phone"));
+                        userEmail.setText(documentSnapshot.getString("Email"));
+                    }
+                });
         //Hiding the appbar
         //getSupportActionBar().hide();
         btnUpdateUser.setOnClickListener(View -> updateUser());
