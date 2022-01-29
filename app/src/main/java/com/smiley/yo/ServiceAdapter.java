@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -53,84 +54,22 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ViewHold
         holder.expandableLayout.setVisibility(isExpandable ? View.VISIBLE : View.GONE);
 
         //Join
-        //Services
-        ArrayList<String> ListServ=new ArrayList<>();
-        db=FirebaseFirestore.getInstance();
-        db.collection("services")
+        FirebaseFirestore.getInstance().collection("Users")
+                .document(service.getUserid())
                 .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if(task.isSuccessful()){
-                            for (QueryDocumentSnapshot document:task.getResult()){
-                                ListServ.add(document.getString("userid"));
-                                Log.d(TAG, String.valueOf(ListServ));
-                            }
-                        }
-                    }
+                    public void onSuccess(@NonNull DocumentSnapshot documentSnapshot) {
+                        holder.userEmail.setText(documentSnapshot.getString("Email"));
+                        holder.userPhone.setText(documentSnapshot.getString("Phone"));
+                        holder.userLocation.setText(documentSnapshot.getString("Location"));
+                        holder.userName.setText(documentSnapshot.getString("FullName"));
 
+                    }
                 });
-        //Users
-     /*   Map<String,String> ListUser=new HashMap<String,String>();
-        db.collection("users")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if(task.isSuccessful()){
-                            for (QueryDocumentSnapshot document:task.getResult()){
-                              //  ListUser.put(document.getId(), (String) document.get("userid"));
-                                //  Log.d(TAG, String.valueOf(ListUser));
-                               // ListUser.put(document.getId(), (String) document.get("email"));
-                               // Log.d(TAG, String.valueOf(document.getData()));
-
-                                ArrayList<Users> userList=new ArrayList<>();
+        //Services
 
 
-                                document.getString("email");
-
-                                //userList.add(document.getString("email"));
-                               if(document.getId().equals("cc")){
-                                   Log.d(TAG, String.valueOf(document.getData()));
-                               }else{
-                                   db.collection("users").document("cc");
-                                   Log.d(TAG, "non existe");
-                               }
-
-
-
-                            }
-                        }
-                    }
-
-                }); */
-
-        /*for(String l:ListServ){
-            db.collection("users").document(l)
-                    .get()
-                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                                               @Override
-                                               public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                                   if(task.isSuccessful()){
-                                                   for (QueryDocumentSnapshot document:task.getResult()){
-                                                       holder.userEmail.setText(document.getString("email"));
-                                                   }
-                                               }}
-                                           });
-
-
-
-
-            db.addSnapshotsInSyncListener(new Runnable() {
-                @Override
-                public void run() {
-                    holder.userEmail.setText(document.getString("email"));
-
-                }
-            });
-
-        }*/
     }
 
     @Override
@@ -144,6 +83,9 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ViewHold
         TextView  price;
         TextView  desc;
         TextView  userEmail;
+        TextView userLocation;
+        TextView userPhone;
+        TextView userName;
         RelativeLayout linear_Layout;
         RelativeLayout expandableLayout;
         public ViewHolder(@NonNull View itemView) {
@@ -153,6 +95,9 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ViewHold
             price=itemView.findViewById(R.id.price);
             desc=itemView.findViewById(R.id.desc);
             userEmail=itemView.findViewById(R.id.userEmail);
+            userLocation=itemView.findViewById(R.id.userLocation);
+            userName=itemView.findViewById(R.id.userName);
+            userPhone=itemView.findViewById(R.id.userPhone);
             linear_Layout=itemView.findViewById(R.id.linearLayout);
             expandableLayout=itemView.findViewById(R.id.expandable_layout);
 

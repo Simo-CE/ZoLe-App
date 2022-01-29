@@ -31,15 +31,18 @@
                 android:layout_height="match_parent"
                 android:background="@color/primary_color">
 
+
                 <ImageView
                     android:id="@+id/imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="151dp"
+                    android:layout_height="118dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="5dp"
+                    app:civ_border_color="@color/background_color"
+                    app:civ_border_width="2dp"
                     app:layout_constraintBottom_toTopOf="@+id/relative_profile"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:src="@tools:sample/avatars" />
-
+                    app:layout_constraintTop_toTopOf="parent" />
                 <TextView
                     android:id="@+id/user_name_profile"
                     android:layout_width="wrap_content"
@@ -111,6 +114,7 @@
                     app:layout_constraintStart_toStartOf="parent">
 
                     <TextView
+                        android:id="@+id/user_phone_profile"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="42dp"
@@ -121,6 +125,7 @@
                         tools:ignore="SmallSp" />
 
                     <TextView
+                        android:id="@+id/user_email_profile"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"

@@ -80,7 +80,10 @@ public class ProfilePostFragment extends Fragment {
                     }
                     for(DocumentChange dc:value.getDocumentChanges()){
                         if(dc.getType()== DocumentChange.Type.ADDED){
-                            Listpost.add(dc.getDocument().toObject(Post.class));
+                            String documentIdPost=dc.getDocument().getId();
+                            Post post=dc.getDocument().toObject(Post.class);
+                            post.setDocumentId(documentIdPost);
+                            Listpost.add(post);
                         }
                         RVAdapter.notifyDataSetChanged();
                     }
