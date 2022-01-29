@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/half_circle"
+        app:liftOnScroll="true">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:menu="@menu/app_bar"
+            app:title="@string/app_name"
+            app:layout_scrollFlags="scroll|enterAlways|snap" />
+        <!--app:navigationIcon="@drawable/icon_menu"
+        android:background="@drawable/half_circle"-->
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+</LinearLayout>
+
+
+    <!--LinearLayout-->
+    <!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/topAppBar"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/half_circle"
+            android:minHeight="?attr/actionBarSize"
+            app:menu="@menu/app_bar"
+            app:navigationIcon="@drawable/icon_menu"
+            app:title="@string/app_name">
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </LinearLayout>-->
+
+
+    <!--coordinatorlayout-->
+    <!--<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:background="@color/primary_color"
+        tools:context=".HomeActivity">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/half_circle">
+
+            &lt;!&ndash;app:liftOnScroll="true"&ndash;&gt;
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/topAppBar"
+                style="@style/Widget.MaterialComponents.Toolbar.Primary"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@drawable/half_circle"
+                app:menu="@menu/app_bar"
+                app:navigationIcon="@drawable/icon_menu"
+                app:title="@string/app_name" />
+
+            &lt;!&ndash;<TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/search"
+                android:textColor="@color/orange" />&ndash;&gt;
+
+            &lt;!&ndash;<com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/topAppBar"
+                style="@style/Widget.MaterialComponents.Toolbar.Primary"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@drawable/half_circle"
+                app:menu="@menu/app_bar"
+                app:navigationIcon="@drawable/icon_menu"
+                app:title="@string/app_name" />&ndash;&gt;
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        &lt;!&ndash;<androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            &lt;!&ndash; Scrollable content &ndash;&gt;
+
+        </androidx.core.widget.NestedScrollView>&ndash;&gt;
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>-->

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="textField">
+        <item name="android:textColor">#F6FEFF</item>
+        <item name="fontFamily">@font/nunito_regular</item>
+    </style>
+    <!--Colors:
+            main dark blue: #082032
+            light blue sec: #2C394B
+            extra light blue: #223756
+            orange: #FF4C29
+            glassy white: #F6FEFF
+            -->
+
+    <style name="ThemeOverlay.App.TextInputLayout" parent="">
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorOnSurface">@color/light_blue</item>
+        <item name="colorError">@color/orange</item>
+    </style>
+
+</resources>

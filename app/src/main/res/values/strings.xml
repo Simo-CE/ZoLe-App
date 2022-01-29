@@ -1,3 +1,56 @@
 <resources>
+<<<<<<< HEAD
     <string name="app_name">zole</string>
+=======
+    <!--Login UI strings-->
+    <string name="app_name">ZOLE</string>
+    <string name="menu">Menu</string>
+    <string name="search">Search</string>
+    <string name="notification">Notification</string>
+    <string name="more">More</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="signin_desc">Welcome back</string>
+    <string name="signin">Sign in</string>
+    <string name="signup">Sign up</string>
+    <string name="forgot_pass"><u>Forgot your password?</u></string>
+    <string name="hello">Hello,</string>
+    <string name="signup_desc">Enter your personal details and start a journey with us</string>
+    <string name="register">Register</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="send">Send</string>
+    <string name="recover">Recover Password</string>
+    <string name="create"><u>Create account</u></string>
+    <string name="recover_desc">
+        Enter your email and we will send you instructions to reset your password
+    </string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="description">Description</string>
+    <string name="title">Title</string>
+    <string name="state">State</string>
+    <string name="expired">Expired</string>
+    <string name="available">Available</string>
+    <string name="post_bubble">Bubble</string>
+    <string name="phone">Phone</string>
+
+
+
+    <!--Home UI string-->
+
+    <!--Profile UI string-->
+    <string name="user_name">John Doe</string>
+    <string name="user_type">Tutor</string>
+    <string name="user_desc">Nice short pitch about the tutor or maybe something else</string>
+    <string name="user_location">Taroudant, Morocco</string>
+    <string name="user_phone">06X-XXXXXXXXX</string>
+    <string name="user_email">JohnDoe@gmail.com</string>
+    <string name="post">Post</string>
+    <string name="service">Service</string>
+    <string name="location">Location</string>
+    <string name="logout">Log out</string>
+    <string name="user">User</string>
+    <string name="price">Price</string>
+>>>>>>> 5b24833105cf84e50629fae6f0c43dc6f0685289
 </resources>

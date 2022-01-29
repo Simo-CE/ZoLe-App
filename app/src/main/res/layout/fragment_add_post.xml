@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:background="@color/white_gray"
+    tools:context=".AddPostFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--Post card-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            app:cardElevation="10dp"
+            card_view:cardCornerRadius="10dp"
+            card_view:contentPadding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <!--Title field-->
+                <!--<com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/title"
+                    app:endIconMode="clear_text">
+                    &lt;!&ndash;app:startIconDrawable="@drawable/icon_home"&ndash;&gt;
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/postTitleFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:minHeight="48dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>-->
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/title"
+                    android:textColorHint="@color/dark_blue"
+                    app:boxCornerRadiusTopEnd="16dp"
+                    app:boxCornerRadiusTopStart="16dp"
+                    app:boxStrokeColor="@color/extra_light_blue"
+                    app:counterMaxLength="30"
+                    app:endIconMode="clear_text"
+                    app:hintTextColor="@color/dark_blue">
+                    <!--app:counterEnabled="true"-->
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/postTitleFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+                <!--End Title field-->
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <!--Description field-->
+                <!--<com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxBackgroundColor="@color/primary_color"
+                    app:endIconMode="clear_text">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/postDescriptionFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="top"
+                        android:hint="@string/description"
+                        android:inputType="text|textMultiLine"
+                        android:lines="6"
+                        android:minLines="6"
+                        android:scrollbars="vertical" />
+
+                </com.google.android.material.textfield.TextInputLayout>-->
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/description"
+                    android:textColorHint="@color/dark_blue"
+                    app:boxStrokeColor="@color/extra_light_blue"
+                    app:endIconMode="clear_text"
+                    app:hintTextColor="@color/dark_blue">
+                    <!--app:counterEnabled="true"-->
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/postDescriptionFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="top"
+                        android:inputType="text|textMultiLine"
+                        android:lines="6"
+                        android:minLines="6"
+                        android:scrollbars="vertical" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+                <!--End Description field-->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <!--Spinner material design-->
+                <!--<com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="level"
+                    app:endIconMode="clear_text">
+
+                    <AutoCompleteTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none" />
+
+                </com.google.android.material.textfield.TextInputLayout>-->
+
+                <!--Location field-->
+                <!--<com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_toStartOf="@+id/postLevelSpinner"
+                    android:hint="@string/location"
+                    app:boxBackgroundColor="@color/primary_color"
+                    app:endIconMode="clear_text">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/postLocation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:minHeight="48dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>-->
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/location"
+                    android:textColorHint="@color/dark_blue"
+                    app:boxStrokeColor="@color/extra_light_blue"
+                    app:endIconMode="clear_text"
+                    app:hintTextColor="@color/dark_blue">
+                    <!--app:counterEnabled="true"-->
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/postLocation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+                <!--End location field-->
+
+                <!--Level spinner-->
+                <Spinner
+                    android:id="@+id/postLevelSpinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minWidth="130dp"
+                    android:minHeight="50dp" />
+                <!--End Level spinner-->
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+        <!--End Post card-->
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/addPostBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="bottom|center"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/light_blue"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Add"
+            android:textAllCaps="false"
+            android:textColor="@color/primary_color"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:cornerRadius="30dp" />
+
+    </RelativeLayout>
+
+</FrameLayout>
