@@ -13,7 +13,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Yo">
-
         <!--activity
             android:name=".Home"
             android:exported="false" /-->
