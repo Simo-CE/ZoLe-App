@@ -1,5 +1,6 @@
 package com.smiley.yo;
 
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -21,11 +23,17 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 public class ProfileFragment extends Fragment {
 
     ViewPager viewPager;
     TabLayout tabLayout;
+    FirebaseStorage storage;
+    StorageReference storageReference;
+    ImageView imageViewProfile;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -83,6 +91,14 @@ public class ProfileFragment extends Fragment {
                         userEmail.setText(documentSnapshot.getString("Email"));
                     }
                 });
+        //Image
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
+        imageViewProfile=view.findViewById(R.id.imageView);
+        StorageReference imageref=storageReference.child("image/"+user.getUid()+".jpeg");
+        imageref.getDownloadUrl().addOnSuccessListener((OnSuccessListener<? super Uri>) (uri)->{
+            Picasso.get().load(uri).into(imageViewProfile);
+        });
         //Hiding the appbar
         //getSupportActionBar().hide();
         btnUpdateUser.setOnClickListener(View -> updateUser());
