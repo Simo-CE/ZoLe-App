@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
     android:background="@color/white_gray"
     tools:context=".UpdateUserFragment">
 
@@ -175,7 +175,7 @@
 
 </androidx.constraintlayout.widget.ConstraintLayout>-->
 
-    <LinearLayout
+    <!--<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -338,6 +338,158 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/relativeLayout5" />
 
+
+    </LinearLayout>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/relative_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/dark_blue"
+            android:paddingBottom="?attr/actionBarSize">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/user_image_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:clickable="true"
+                android:src="@drawable/ic_launcher_foreground"
+                app:civ_border_color="@color/background_color"
+                app:civ_border_width="2dp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="-20dp"
+            android:background="@drawable/top_corner_shape"
+            android:backgroundTint="@color/white_gray"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:orientation="vertical">
+
+                <!--Name field-->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/name_userfield"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/name"
+                    android:textColorHint="@color/dark_blue"
+                    app:boxStrokeColor="@color/extra_light_blue"
+                    app:counterMaxLength="30"
+                    app:endIconMode="clear_text"
+                    app:hintTextColor="@color/dark_blue">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/user_name_profile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+                <!--End Name field-->
+
+                <!--Location field-->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/location_userfield"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/location"
+                    android:textColorHint="@color/dark_blue"
+                    app:boxStrokeColor="@color/extra_light_blue"
+                    app:counterMaxLength="30"
+                    app:endIconMode="clear_text"
+                    app:hintTextColor="@color/dark_blue">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/user_location_profile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+                <!--End Location field-->
+
+                <!--Phone field-->
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/phone"
+                    android:textColorHint="@color/dark_blue"
+
+                    app:boxStrokeColor="@color/extra_light_blue"
+                    app:counterMaxLength="30"
+                    app:endIconMode="clear_text"
+                    app:hintTextColor="@color/dark_blue">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/user_phone_profile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+                <!--End Phone field-->
+
+                <!--Description field-->
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/description"
+                    android:textColorHint="@color/dark_blue"
+                    app:boxStrokeColor="@color/extra_light_blue"
+                    app:endIconMode="clear_text"
+                    app:hintTextColor="@color/dark_blue">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/user_desc_profile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="top"
+                        android:inputType="text|textMultiLine"
+                        android:lines="6"
+                        android:minLines="6"
+                        android:scrollbars="vertical" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+                <!--End Description field-->
+
+            </LinearLayout>
+
+            <!--Save button-->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_update_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="@color/light_blue"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="@string/save"
+                android:textAllCaps="false"
+                android:textColor="@color/primary_color"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:cornerRadius="30dp" />
+            <!--End Save button-->
+
+        </RelativeLayout>
 
     </LinearLayout>
 

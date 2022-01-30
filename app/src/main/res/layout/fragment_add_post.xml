@@ -31,21 +31,6 @@
                 android:orientation="vertical">
 
                 <!--Title field-->
-                <!--<com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/title"
-                    app:endIconMode="clear_text">
-                    &lt;!&ndash;app:startIconDrawable="@drawable/icon_home"&ndash;&gt;
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/postTitleFragment"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="start"
-                        android:minHeight="48dp" />
-
-                </com.google.android.material.textfield.TextInputLayout>-->
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
@@ -74,24 +59,6 @@
                     android:layout_height="wrap_content" />
 
                 <!--Description field-->
-                <!--<com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:boxBackgroundColor="@color/primary_color"
-                    app:endIconMode="clear_text">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/postDescriptionFragment"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="top"
-                        android:hint="@string/description"
-                        android:inputType="text|textMultiLine"
-                        android:lines="6"
-                        android:minLines="6"
-                        android:scrollbars="vertical" />
-
-                </com.google.android.material.textfield.TextInputLayout>-->
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
@@ -120,38 +87,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
-                <!--Spinner material design-->
-                <!--<com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="level"
-                    app:endIconMode="clear_text">
-
-                    <AutoCompleteTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="none" />
-
-                </com.google.android.material.textfield.TextInputLayout>-->
-
                 <!--Location field-->
-                <!--<com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_toStartOf="@+id/postLevelSpinner"
-                    android:hint="@string/location"
-                    app:boxBackgroundColor="@color/primary_color"
-                    app:endIconMode="clear_text">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/postLocation"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="start"
-                        android:minHeight="48dp" />
-
-                </com.google.android.material.textfield.TextInputLayout>-->
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
@@ -192,14 +128,11 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_gravity="bottom|center"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
             android:layout_marginBottom="10dp"
             android:backgroundTint="@color/light_blue"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="Add"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="@string/add"
             android:textAllCaps="false"
             android:textColor="@color/primary_color"
             android:textSize="16sp"
